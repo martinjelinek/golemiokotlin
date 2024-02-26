@@ -1,0 +1,6 @@
+/AirQualityListSerializer.kt
+/CoordinatesSerializer.kt
+/IdSerializer.kt
+/ImageSerizalizer.kt
+/OpeningHoursPolymorphicSerializer.kt
+*.gitignore

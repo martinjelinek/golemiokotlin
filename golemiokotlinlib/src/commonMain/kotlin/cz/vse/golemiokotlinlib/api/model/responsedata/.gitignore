@@ -1,0 +1,10 @@
+/AirQualityStationsHistory.kt
+/BicycleCountersDetections.kt
+/ListResponseData.kt
+/MecialInstitutionType.kt
+/MunicipalAuthorityQueue.kt
+/ParkingProperties.kt
+/ParkingsV1History.kt
+/WasteStationsMeasurements.kt
+/WasteStationsPicks.kt
+*.gitignore
