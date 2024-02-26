@@ -20,33 +20,18 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                implementation(libs.coroutines.core)
-                implementation(projects.golemiokotlinlib)
-            }
-        }
         val commonTest by getting {
             dependencies {
+                implementation(projects.golemiokotlinlib)
                 implementation(libs.kotlin.test)
                 implementation(libs.coroutines.test)
             }
-        }
-        val androidMain by getting
-        val iosX64Main by getting
-        val iosArm64Main by getting
-        val iosSimulatorArm64Main by getting
-        val iosMain by creating {
-            dependsOn(commonMain)
-            iosX64Main.dependsOn(this)
-            iosArm64Main.dependsOn(this)
-            iosSimulatorArm64Main.dependsOn(this)
         }
     }
 }
 
 android {
-    namespace = "cz.vse.pragueopendatakotlin.test"
+    namespace = "cz.vse.golemiokotlin"
     compileSdk = (findProperty("android.compileSdk") as String).toInt()
     defaultConfig {
         minSdk = (findProperty("android.minSdk") as String).toInt()
