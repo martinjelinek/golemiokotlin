@@ -25,7 +25,7 @@ import cz.vse.golemiokotlinlib.api.model.responsedata.ResponseData
 import cz.vse.golemiokotlinlib.api.model.responsedata.WasteStationMeasurements
 import cz.vse.golemiokotlinlib.api.model.responsedata.WasteStationsPickDays
 import cz.vse.golemiokotlinlib.api.model.responsedata.WasteStationsPicks
-import cz.vse.golemiokotlinlib.api.service.IGolemioRepository
+import cz.vse.golemiokotlinlib.api.service.Repository
 import cz.vse.golemiokotlinlib.api.service.MedicalGroup
 import cz.vse.golemiokotlinlib.api.service.MunicipalAuthorityType
 import cz.vse.golemiokotlinlib.api.service.WasteStationAccessibility
@@ -48,9 +48,9 @@ import io.ktor.http.appendPathSegments
 /**
  * Client for handling all types of API requests.
  */
-class GolemioRepository(
+class RemoteRepository(
     endpoint: String = API_URL,
-) : IGolemioRepository {
+) : Repository {
 
     private var logLevel = LogLevel.BODY
     private val httpClient =

@@ -1,6 +1,6 @@
 package cz.vse.jelinekma.pragueopendatakotlinlib.api
 
-import cz.vse.golemiokotlinlib.api.service.impl.GolemioRepository
+import cz.vse.golemiokotlinlib.api.service.impl.RemoteRepository
 import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -12,7 +12,7 @@ import kotlin.test.Test
  */
 class TestClient {
 
-    private lateinit var client: GolemioRepository
+    private lateinit var client: RemoteRepository
     private val xAccessToken =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im10LmplbGluZWtAZ21haWwuY29tIiwiaWQiOjIwMjksIm5hbWUiOm51bGwsInN1cm5hbWUiOm51bGwsImlhdCI6MTY4OTE4MzYyNCwiZXhwIjoxMTY4OTE4MzYyNCwiaXNzIjoiZ29sZW1pbyIsImp0aSI6ImQ4NDVlNmE0LWRlNDAtNGEyYS1iMDcwLTVmYTRhYjRhZTE3NSJ9.yvqnXrmiBWLSiVFW5hAMhOs12umOkZPOhekiQTN_JEo"
     private val latlng = Pair("50.124935", "14.457204")
@@ -22,7 +22,7 @@ class TestClient {
 
     @BeforeTest
     fun setUp() {
-        client = GolemioRepository()
+        client = RemoteRepository()
     }
 
     // region air-quality

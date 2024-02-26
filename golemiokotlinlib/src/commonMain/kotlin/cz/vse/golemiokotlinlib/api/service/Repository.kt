@@ -32,7 +32,7 @@ import cz.vse.golemiokotlinlib.api.model.responsedata.WasteStationsPicks
  * @author Martin Jelínek (mt.jelinek@gmail.com)
  * todo split into more specific clients
  */
-interface IGolemioRepository {
+interface Repository {
     /**
      * @return A list of [AirQualityStation]s..
      */
