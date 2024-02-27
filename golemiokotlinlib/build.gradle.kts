@@ -69,6 +69,7 @@ android {
 }
 dependencies {
     implementation(libs.android.core)
+    implementation(project(":golemiokotlinlib"))
 }
 
 tasks.register("testClasses") {

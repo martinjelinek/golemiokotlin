@@ -1,6 +1,6 @@
 package cz.vse.jelinekma.pragueopendatakotlinlib.api
 
-import cz.vse.golemiokotlinlib.api.service.impl.RemoteRepository
+import cz.vse.golemiokotlinlib.v2.service.impl.RemoteRepository
 import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -30,7 +30,6 @@ class TestClient {
     @Test
     fun testGetAllAirQualityStation() = runTest {
         client.getAllAirQualityStations(
-            xAccessToken,
             latlng = Pair("50.124935", "14.457204"),
             range = 5000,
             districts = null,
@@ -43,7 +42,6 @@ class TestClient {
     @Test
     fun testGetAirHistoryData() = runTest {
         client.getAirQualityStationsHistory(
-            xAccessToken,
             sensorId = "ACHOA",
             limit = 10,
             offset = 0,
@@ -57,7 +55,6 @@ class TestClient {
     @Test
     fun testGetAllBicycleCounters() = runTest {
         client.getAllBicycleCounters(
-            xAccessToken,
             latlng = latlng,
             limit = 10,
             offset = 0,
@@ -68,7 +65,6 @@ class TestClient {
     @Test
     fun testGetBicycleCounterDetections() = runTest {
         client.getBicycleCountersDetections(
-            xAccessToken,
             limit = 10,
             offset = 0,
             from = from,
@@ -81,7 +77,6 @@ class TestClient {
     @Test
     fun testGetBicycleCounterTemperature() = runTest {
         client.getBicycleCountersTemperatures(
-            xAccessToken,
             limit = 10,
             offset = 0,
             from = from,
@@ -96,7 +91,6 @@ class TestClient {
     @Test
     fun testGetAllCityDistricts() = runTest {
         client.getAllCityDistricts(
-            xAccessToken,
             latlng = latlng,
             limit = 10,
             offset = 10,
@@ -107,14 +101,13 @@ class TestClient {
 
     @Test
     fun getCityDistrictByID() = runTest {
-        client.getCityDistrictById(xAccessToken, "praha-1")
+        client.getCityDistrictById("praha-1")
     }
     // endregion
     // region gardens
     @Test
     fun testGetAllGardens() = runTest {
         client.getAllGardens(
-            xAccessToken,
             latlng,
             limit = 10,
             offset = 0,
@@ -127,7 +120,7 @@ class TestClient {
     @Test
     fun getGardensByID() = runTest {
         // todo zminit ze v golemiu nabizi blby id na testovani
-        client.getGardenById(xAccessToken, "letenske-sady")
+        client.getGardenById("letenske-sady")
     }
     // endregion
 //    // region medical-institutions
