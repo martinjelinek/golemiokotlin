@@ -35,7 +35,6 @@ internal interface IGolemioApi {
      * @return A list of [AirQualityStation]s..
      */
     suspend fun getAllAirQualityStations(
-        // todo zminit odchyleni latlng
         latlng: Pair<String, String>?,
         range: Int?,
         districts: List<String>?,
@@ -46,8 +45,6 @@ internal interface IGolemioApi {
 
     /**
      * @return [AirQualityStationHistory].
-     * TODO v textu poreferovat ze Golemio v "try it out" nic nevraci
-     * TODO edit - vraci, ale musi se zmenit rok na pozdejsi - kam az?
      */
     suspend fun getAirQualityStationsHistory(
         sensorId: String,

@@ -34,40 +34,6 @@ import cz.vse.golemiokotlinlib.v2.entity.responsedata.WasteStationsPicks
 interface Repository {
 
     /**
-     * @return A list of [BicycleCounter]s.
-     */
-    suspend fun getAllBicycleCounters(
-        latlng: Pair<String, String>?,
-        range: Int?,
-        limit: Int?,
-        offset: Int?,
-    ): List<BicycleCounter>
-
-    /**
-     * @return list of [BicycleCounterDetection]s.
-     */
-    suspend fun getBicycleCountersDetections(
-        limit: Int?,
-        offset: Int?,
-        from: String?,
-        to: String?,
-        aggregate: Boolean?,
-        id: String,
-    ) : List<BicycleCounterDetection>
-
-    /**
-     * @return [BicycleCounterTemperature]s.
-     */
-    suspend fun getBicycleCountersTemperatures(
-        limit: Int?,
-        offset: Int?,
-        from: String?,
-        to: String?,
-        aggregate: Boolean?,
-        ids: List<String>?,
-    ) : List<BicycleCounterTemperature>
-
-    /**
      * @return A list of [CityDistrict]s.
      */
     suspend fun getAllCityDistricts(

@@ -3,19 +3,22 @@ package cz.vse.golemiokotlinlib.v2.service.impl.cache
 import cz.vse.golemiokotlinlib.v2.entity.featurescollection.AirQualityStation
 import cz.vse.golemiokotlinlib.v2.entity.responsedata.AirQualityStationHistory
 import cz.vse.golemiokotlinlib.v2.network.GolemioApi
-import cz.vse.golemiokotlinlib.v2.service.IAirQualityRemoteRepository
-import cz.vse.golemiokotlinlib.v2.service.impl.remote.AirQualityRemoteRepository
+import cz.vse.golemiokotlinlib.v2.service.CachingRepository2
+import cz.vse.golemiokotlinlib.v2.service.IAirQualityRepository
+import cz.vse.golemiokotlinlib.v2.service.impl.remote.AirQualityRepository
 
 /**
  * Repository for caching air quality data requests.
  * Non-persistent cache using kotlin collections.
  */
 internal class AirQualityCachingRepository(
-    private val remoteRepository: AirQualityRemoteRepository,
-) : IAirQualityRemoteRepository {
+    private val remoteRepository: AirQualityRepository,
+) : IAirQualityRepository, CachingRepository2() {
 
-    private var airQualityStations: List<AirQualityStation> = emptyList()
-    private var airQualityStationsHistory: List<AirQualityStationHistory> = emptyList()
+    private val airQualityStationsCache: MutableMap<String, List<AirQualityStation>> =
+        mutableMapOf()
+    private var airQualityStationsHistoryCache: MutableMap<String, List<AirQualityStationHistory>> =
+        mutableMapOf()
 
     override suspend fun getAllAirQualityStations(
         latlng: Pair<String, String>?,
@@ -24,15 +27,25 @@ internal class AirQualityCachingRepository(
         limit: Int?,
         offset: Int?,
         updatedSince: String?,
-    ): List<AirQualityStation> = airQualityStations.ifEmpty {
-        remoteRepository.getAllAirQualityStations(
+    ): List<AirQualityStation> {
+        return fetchDataAndCache(
+            airQualityStationsCache,
             latlng,
             range,
             districts,
             limit,
             offset,
             updatedSince
-        ).also { airQualityStations = it }
+        ) {
+            remoteRepository.getAllAirQualityStations(
+                latlng,
+                range,
+                districts,
+                limit,
+                offset,
+                updatedSince
+            )
+        }
     }
 
     override suspend fun getAirQualityStationsHistory(
@@ -41,18 +54,30 @@ internal class AirQualityCachingRepository(
         offset: Int?,
         from: String?,
         to: String?,
-    ): List<AirQualityStationHistory> = airQualityStationsHistory.ifEmpty {
-        remoteRepository.getAirQualityStationsHistory(
-            sensorId, limit, offset, from, to
-        ).also { airQualityStationsHistory = it }
+    ): List<AirQualityStationHistory> {
+        return fetchDataAndCache(
+            airQualityStationsHistoryCache,
+            sensorId,
+            limit,
+            offset,
+            from,
+            to
+        ) {
+            remoteRepository.getAirQualityStationsHistory(
+                sensorId,
+                limit,
+                offset,
+                from,
+                to
+            )
+        }
     }
 
     companion object Factory {
-
         /**
-         * Creates [AirQualityCachingRepository] over [AirQualityRemoteRepository] with [GolemioApi] handling the api calls.
+         * Creates [AirQualityCachingRepository] over [AirQualityRepository] with [GolemioApi] handling the api calls.
          */
         fun create(apiKey: String) =
-            AirQualityCachingRepository(AirQualityRemoteRepository(GolemioApi(apiKey)))
+            AirQualityCachingRepository(AirQualityRepository(GolemioApi(apiKey)))
     }
 }
