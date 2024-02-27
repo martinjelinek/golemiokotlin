@@ -12,7 +12,7 @@ import cz.vse.golemiokotlinlib.v2.service.impl.remote.AirQualityRemoteRepository
  * Non-persistent cache using kotlin collections.
  */
 internal class AirQualityCachingRepository(
-    private val remoteRepository: AirQualityRemoteRepository,
+    private val remoteRepository: IAirQualityRepository,
 ) : IAirQualityRepository, CachingRepository() {
 
     private val airQualityStationsCache: MutableMap<String, List<AirQualityStation>> =

@@ -12,8 +12,9 @@ import kotlinx.serialization.json.Json
 /**
  * CIO engine supports jvm and kotlin/native.
  */
+// TODO switch back to Darwin: kotlin.IllegalStateException: TLS sessions are not supported on Native platform
 object HttpClientFactory {
-    fun createHttpClient(logLevel: LogLevel): HttpClient = HttpClient(CIO) {
+    fun createHttpClient(logLevel: LogLevel): HttpClient = HttpClient {
         install(ContentNegotiation) {
             json(
                 Json {

@@ -1,4 +1,4 @@
-package cz.vse.golemiokotlinlib.v2
+package cz.vse.golemiokotlinlib.v2.client
 
 /**
  * Exposed.

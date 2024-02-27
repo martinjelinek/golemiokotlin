@@ -1,4 +1,4 @@
-package cz.vse.golemiokotlinlib.v2
+package cz.vse.golemiokotlinlib.v2.client
 
 import cz.vse.golemiokotlinlib.v2.entity.featurescollection.BicycleCounter
 import cz.vse.golemiokotlinlib.v2.entity.responsedata.BicycleCounterDetection
@@ -6,6 +6,9 @@ import cz.vse.golemiokotlinlib.v2.entity.responsedata.BicycleCounterTemperature
 import cz.vse.golemiokotlinlib.v2.service.IBicycleCountersRepository
 import cz.vse.golemiokotlinlib.v2.service.impl.cache.BicycleCountersCachingRepository
 
+/**
+ * Exposed client class providing bicycle counters data requests.
+ */
 class BicycleCountersClient(apiKey: String) {
 
     private val repository: IBicycleCountersRepository = BicycleCountersCachingRepository.create(apiKey)

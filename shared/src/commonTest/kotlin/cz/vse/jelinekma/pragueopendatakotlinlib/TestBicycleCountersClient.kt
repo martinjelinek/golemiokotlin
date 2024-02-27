@@ -1,6 +1,6 @@
 package cz.vse.jelinekma.pragueopendatakotlinlib
 
-import cz.vse.golemiokotlinlib.v2.BicycleCountersClient
+import cz.vse.golemiokotlinlib.v2.client.BicycleCountersClient
 import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test

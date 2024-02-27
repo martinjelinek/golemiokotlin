@@ -13,7 +13,7 @@ import cz.vse.golemiokotlinlib.v2.service.impl.remote.BicycleCountersRemoteRepos
  * Non-persistent cache using kotlin collections.
  */
 internal class BicycleCountersCachingRepository(
-    private val remoteRepository: BicycleCountersRemoteRepository,
+    private val remoteRepository: IBicycleCountersRepository,
 ) : IBicycleCountersRepository, CachingRepository() {
 
     private var bicycleCounters: MutableMap<String, List<BicycleCounter>> =

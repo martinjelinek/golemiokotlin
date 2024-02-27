@@ -52,25 +52,6 @@ interface Repository {
     ): CityDistrict
 
     /**
-     * @return A list of [Garden]s.
-     */
-    suspend fun getAllGardens(
-        latlng: Pair<String, String>?,
-        range: Int?,
-        districts: List<String>?,
-        limit: Int?,
-        offset: Int?,
-        updatedSince: String?
-    ): List<Garden>
-
-    /**
-     * @return [Garden] by it's [id].
-     */
-    suspend fun getGardenById(
-        id: String
-    ): Garden
-
-    /**
      * @param latlng sorting by location (latitude first)
      * @param range filter by distance from latlng in meters (range query), depends on the latlng parameter
      * @param districts filter by Prague city districts (slug) separated by comma; example: praha-4

@@ -26,17 +26,6 @@ internal open class RemoteRepository(
 
     // endregion
     // region gardens
-    override suspend fun getAllGardens(
-        latlng: Pair<String, String>?,
-        range: Int?,
-        districts: List<String>?,
-        limit: Int?,
-        offset: Int?,
-        updatedSince: String?
-    ) = api.getAllGardens(latlng, range, districts, limit, offset, updatedSince)
-
-    override suspend fun getGardenById(id: String) = api.getGardenById(id)
-
     // endregion
     // region medical-institutions
     override suspend fun getAllMedicalInstitutions(

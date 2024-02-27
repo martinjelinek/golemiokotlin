@@ -1,13 +1,13 @@
 package cz.vse.golemiokotlinlib.v2.service.impl.remote
 
-import cz.vse.golemiokotlinlib.v2.network.GolemioApi
+import cz.vse.golemiokotlinlib.v2.network.IGolemioApi
 import cz.vse.golemiokotlinlib.v2.service.IBicycleCountersRepository
 
 /**
  * Repository handling bicycle counters requests via [api].
  */
 internal class BicycleCountersRemoteRepository(
-    private val api: GolemioApi
+    private val api: IGolemioApi
 ) : IBicycleCountersRepository {
     override suspend fun getAllBicycleCounters(
         latlng: Pair<String, String>?,

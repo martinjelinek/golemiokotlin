@@ -1,4 +1,4 @@
-package cz.vse.golemiokotlinlib.v2
+package cz.vse.golemiokotlinlib.v2.client
 
 import cz.vse.golemiokotlinlib.v2.entity.featurescollection.AirQualityStation
 import cz.vse.golemiokotlinlib.v2.entity.responsedata.AirQualityStationHistory
