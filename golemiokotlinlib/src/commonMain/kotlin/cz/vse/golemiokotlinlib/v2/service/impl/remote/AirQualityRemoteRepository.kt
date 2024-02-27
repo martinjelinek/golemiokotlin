@@ -6,7 +6,7 @@ import cz.vse.golemiokotlinlib.v2.service.IAirQualityRepository
 /**
  * Repository handling air quality data requests via [api].
  */
-internal class AirQualityRepository(
+internal class AirQualityRemoteRepository(
     private val api: IGolemioApi,
 ) : IAirQualityRepository {
     override suspend fun getAllAirQualityStations(

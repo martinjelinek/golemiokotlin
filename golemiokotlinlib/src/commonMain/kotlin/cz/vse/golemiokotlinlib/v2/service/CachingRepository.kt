@@ -3,8 +3,12 @@ package cz.vse.golemiokotlinlib.v2.service
 /**
  * Open class handling common logic for caching.
  */
-internal open class CachingRepository2 {
+open class CachingRepository {
 
+    /**
+     * Looks for the required data to [cache].
+     * Fetches new data via [fetchData] if cache not present.
+     */
     suspend fun <T> fetchDataAndCache(
         cache: MutableMap<String, List<T>>,
         vararg params: Any?,

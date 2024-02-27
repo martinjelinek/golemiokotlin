@@ -3,17 +3,17 @@ package cz.vse.golemiokotlinlib.v2.service.impl.cache
 import cz.vse.golemiokotlinlib.v2.entity.featurescollection.AirQualityStation
 import cz.vse.golemiokotlinlib.v2.entity.responsedata.AirQualityStationHistory
 import cz.vse.golemiokotlinlib.v2.network.GolemioApi
-import cz.vse.golemiokotlinlib.v2.service.CachingRepository2
+import cz.vse.golemiokotlinlib.v2.service.CachingRepository
 import cz.vse.golemiokotlinlib.v2.service.IAirQualityRepository
-import cz.vse.golemiokotlinlib.v2.service.impl.remote.AirQualityRepository
+import cz.vse.golemiokotlinlib.v2.service.impl.remote.AirQualityRemoteRepository
 
 /**
  * Repository for caching air quality data requests.
  * Non-persistent cache using kotlin collections.
  */
 internal class AirQualityCachingRepository(
-    private val remoteRepository: AirQualityRepository,
-) : IAirQualityRepository, CachingRepository2() {
+    private val remoteRepository: AirQualityRemoteRepository,
+) : IAirQualityRepository, CachingRepository() {
 
     private val airQualityStationsCache: MutableMap<String, List<AirQualityStation>> =
         mutableMapOf()
@@ -75,9 +75,9 @@ internal class AirQualityCachingRepository(
 
     companion object Factory {
         /**
-         * Creates [AirQualityCachingRepository] over [AirQualityRepository] with [GolemioApi] handling the api calls.
+         * Creates [AirQualityCachingRepository] over [AirQualityRemoteRepository] with [GolemioApi] handling the api calls.
          */
         fun create(apiKey: String) =
-            AirQualityCachingRepository(AirQualityRepository(GolemioApi(apiKey)))
+            AirQualityCachingRepository(AirQualityRemoteRepository(GolemioApi(apiKey)))
     }
 }

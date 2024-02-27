@@ -6,7 +6,7 @@ import cz.vse.golemiokotlinlib.v2.entity.responsedata.AirQualityStationHistory
 /**
  * Interface for remote repository handling air quality data requests.
  */
-internal interface IAirQualityRepository {
+interface IAirQualityRepository {
 
     /**
      * @return A list of [AirQualityStation]s.

@@ -1,6 +1,6 @@
-package cz.vse.jelinekma.pragueopendatakotlinlib.api
+package cz.vse.jelinekma.pragueopendatakotlinlib
 
-import cz.vse.golemiokotlinlib.v2.service.impl.remote.RemoteRepository
+import cz.vse.golemiokotlinlib.v2.AirQualityClient
 import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -10,32 +10,24 @@ import kotlin.test.Test
  * TODO adjust tests to actually test something, now it's just verifying that the data gets fetched
  * TODO test on iOS
  */
-class TestClient {
+class TestAirQualityClient : TestClient() {
 
-    private lateinit var client: RemoteRepository
-    private val xAccessToken =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im10LmplbGluZWtAZ21haWwuY29tIiwiaWQiOjIwMjksIm5hbWUiOm51bGwsInN1cm5hbWUiOm51bGwsImlhdCI6MTY4OTE4MzYyNCwiZXhwIjoxMTY4OTE4MzYyNCwiaXNzIjoiZ29sZW1pbyIsImp0aSI6ImQ4NDVlNmE0LWRlNDAtNGEyYS1iMDcwLTVmYTRhYjRhZTE3NSJ9.yvqnXrmiBWLSiVFW5hAMhOs12umOkZPOhekiQTN_JEo"
-    private val latlng = Pair("50.124935", "14.457204")
-    private val from = "2023-05-16T04:27:58.000Z"
-    private val to = "2023-05-16T04:27:58.000Z"
-    private val updatedSince = "2023-05-18T07:38:37.000Z"
+    private lateinit var client: AirQualityClient
 
     @BeforeTest
     fun setUp() {
-        client = RemoteRepository(xAccessToken)
+        client = AirQualityClient(apiKey)
     }
 
-    // region air-quality
-    // TODO add districts param
     @Test
     fun testGetAllAirQualityStation() = runTest {
         client.getAllAirQualityStations(
-            latlng = Pair("50.124935", "14.457204"),
-            range = 5000,
+            latlng = latlng,
+            range = range,
             districts = null,
-            limit = 2,
-            offset = 2,
-            updatedSince = updatedSince
+            limit = limit,
+            offset = offset,
+            updatedSince = updatedSince,
         )
     }
 
@@ -43,85 +35,48 @@ class TestClient {
     fun testGetAirHistoryData() = runTest {
         client.getAirQualityStationsHistory(
             sensorId = "ACHOA",
-            limit = 10,
-            offset = 0,
-            from = "2022-05-16T04:27:58.000Z",
-            to = "2022-05-18T04:27:58.000Z"
-        )
-    }
-    // endregion
-    // region bicycle-counters
-
-    @Test
-    fun testGetAllBicycleCounters() = runTest {
-        client.getAllBicycleCounters(
-            latlng = latlng,
-            limit = 10,
-            offset = 0,
-            range = 5000,
-        )
-    }
-
-    @Test
-    fun testGetBicycleCounterDetections() = runTest {
-        client.getBicycleCountersDetections(
-            limit = 10,
-            offset = 0,
+            limit = limit,
+            offset = offset,
             from = from,
             to = to,
-            aggregate = false,
-            id = "camea-BC_ZA-BO"
         )
     }
 
-    @Test
-    fun testGetBicycleCounterTemperature() = runTest {
-        client.getBicycleCountersTemperatures(
-            limit = 10,
-            offset = 0,
-            from = from,
-            to = to,
-            aggregate = false,
-            ids = null
-        )
-    }
-
-    //endregion
-    // region city-districts
-    @Test
-    fun testGetAllCityDistricts() = runTest {
-        client.getAllCityDistricts(
-            latlng = latlng,
-            limit = 10,
-            offset = 10,
-            range = 5000,
-            updatedSince = updatedSince,
-        )
-    }
-
-    @Test
-    fun getCityDistrictByID() = runTest {
-        client.getCityDistrictById("praha-1")
-    }
-    // endregion
-    // region gardens
-    @Test
-    fun testGetAllGardens() = runTest {
-        client.getAllGardens(
-            latlng,
-            limit = 10,
-            offset = 0,
-            range = 5000,
-            districts = listOf("praha-4"),
-            updatedSince = updatedSince,
-        )
-    }
-
-    @Test
-    fun getGardensByID() = runTest {
-        // todo zminit ze v golemiu nabizi blby id na testovani
-        client.getGardenById("letenske-sady")
-    }
+//    // region city-districts
+//    @Test
+//    fun testGetAllCityDistricts() = runTest {
+//        client.getAllCityDistricts(
+//            latlng = latlng,
+//            limit = 10,
+//            offset = 10,
+//            range = 5000,
+//            updatedSince = updatedSince,
+//        )
+//    }
+//
+//    @Test
+//    fun getCityDistrictByID() = runTest {
+//        client.getCityDistrictById("praha-1")
+//    }
+//    // endregion
+//    // region gardens
+//    @Test
+//    fun testGetAllGardens() = runTest {
+//        client.getAllGardens(
+//            latlng,
+//            limit = 10,
+//            offset = 0,
+//            range = 5000,
+//            districts = listOf("praha-4"),
+//            updatedSince = updatedSince,
+//        )
+//    }
+//
+//    @Test
+//    fun getGardensByID() = runTest {
+//        // todo zminit ze v golemiu nabizi blby id na testovani
+//        client.getGardenById("letenske-sady")
+//    }
     // endregion
 //    // region medical-institutions
 //    @Test

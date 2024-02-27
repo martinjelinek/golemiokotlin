@@ -4,7 +4,7 @@ import cz.vse.golemiokotlinlib.v2.entity.featurescollection.BicycleCounter
 import cz.vse.golemiokotlinlib.v2.entity.responsedata.BicycleCounterDetection
 import cz.vse.golemiokotlinlib.v2.entity.responsedata.BicycleCounterTemperature
 import cz.vse.golemiokotlinlib.v2.network.GolemioApi
-import cz.vse.golemiokotlinlib.v2.service.CachingRepository2
+import cz.vse.golemiokotlinlib.v2.service.CachingRepository
 import cz.vse.golemiokotlinlib.v2.service.IBicycleCountersRepository
 import cz.vse.golemiokotlinlib.v2.service.impl.remote.BicycleCountersRemoteRepository
 
@@ -14,7 +14,7 @@ import cz.vse.golemiokotlinlib.v2.service.impl.remote.BicycleCountersRemoteRepos
  */
 internal class BicycleCountersCachingRepository(
     private val remoteRepository: BicycleCountersRemoteRepository,
-) : IBicycleCountersRepository, CachingRepository2() {
+) : IBicycleCountersRepository, CachingRepository() {
 
     private var bicycleCounters: MutableMap<String, List<BicycleCounter>> =
         mutableMapOf()
