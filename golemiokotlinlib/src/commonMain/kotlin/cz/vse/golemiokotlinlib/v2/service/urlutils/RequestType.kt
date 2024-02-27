@@ -1,5 +1,8 @@
-package cz.vse.golemiokotlinlib.v2.data
+package cz.vse.golemiokotlinlib.v2.service.urlutils
 
+/**
+ * Used for building the request URL.
+ */
 internal enum class RequestType(val path: String) {
     AIR_QUALITY_STATIONS("airqualitystations"),
     BICYCLE_COUNTERS("bicyclecounters"),

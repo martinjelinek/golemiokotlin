@@ -1,4 +1,4 @@
-package cz.vse.golemiokotlinlib.v2.data
+package cz.vse.golemiokotlinlib.v2.service.urlutils
 
 import cz.vse.golemiokotlinlib.v2.service.MedicalGroup
 import cz.vse.golemiokotlinlib.v2.service.MunicipalAuthorityType

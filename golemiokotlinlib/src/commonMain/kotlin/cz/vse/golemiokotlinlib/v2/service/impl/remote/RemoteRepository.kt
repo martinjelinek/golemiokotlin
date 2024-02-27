@@ -1,8 +1,6 @@
-package cz.vse.golemiokotlinlib.v2.service.impl
+package cz.vse.golemiokotlinlib.v2.service.impl.remote
 
-import cz.vse.golemiokotlinlib.v2.entity.featurescollection.AirQualityStation
 import cz.vse.golemiokotlinlib.v2.entity.featurescollection.WasteCollection
-import cz.vse.golemiokotlinlib.v2.entity.responsedata.AirQualityStationHistory
 import cz.vse.golemiokotlinlib.v2.network.GolemioApi
 import cz.vse.golemiokotlinlib.v2.service.Repository
 import cz.vse.golemiokotlinlib.v2.service.MedicalGroup
@@ -13,31 +11,10 @@ import cz.vse.golemiokotlinlib.v2.network.IGolemioApi
 /**
  * Client for handling all types of API requests.
  */
-class RemoteRepository(
+internal class RemoteRepository(
     private val apiKey: String,
     private val api: IGolemioApi = GolemioApi(apiKey)
 ) : Repository {
-
-    // region air-quality
-    override suspend fun getAllAirQualityStations(
-        latlng: Pair<String, String>?,
-        range: Int?,
-        districts: List<String>?,
-        limit: Int?,
-        offset: Int?,
-        updatedSince: String?,
-    ): List<AirQualityStation> = api.getAllAirQualityStations(
-        latlng, range, districts, limit, offset, updatedSince
-    )
-
-    override suspend fun getAirQualityStationsHistory(
-        sensorId: String,
-        limit: Int?,
-        offset: Int?,
-        from: String?,
-        to: String?,
-    ): List<AirQualityStationHistory> =
-        api.getAirQualityStationsHistory(sensorId, limit, offset, from, to)
 
     // endregion
     // region bicycle-counters

@@ -1,6 +1,6 @@
 package cz.vse.jelinekma.pragueopendatakotlinlib.api
 
-import cz.vse.golemiokotlinlib.v2.service.impl.RemoteRepository
+import cz.vse.golemiokotlinlib.v2.service.impl.remote.RemoteRepository
 import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test

@@ -1,8 +1,7 @@
 package cz.vse.golemiokotlinlib.v2.network
 
-import cz.vse.golemiokotlinlib.v2.data.ApiException
-import cz.vse.golemiokotlinlib.v2.data.RequestParamsBuilder
-import cz.vse.golemiokotlinlib.v2.data.RequestType
+import cz.vse.golemiokotlinlib.v2.service.urlutils.RequestParamsBuilder
+import cz.vse.golemiokotlinlib.v2.service.urlutils.RequestType
 import cz.vse.golemiokotlinlib.v2.entity.featurescollection.AirQualityStation
 import cz.vse.golemiokotlinlib.v2.entity.featurescollection.BicycleCounter
 import cz.vse.golemiokotlinlib.v2.entity.featurescollection.CityDistrict
@@ -590,3 +589,6 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
         private const val API_URL = "https://api.golemio.cz/v2/"
     }
 }
+
+class ApiException(responseCode: Int, message: String) : Exception("$responseCode: $message")
+

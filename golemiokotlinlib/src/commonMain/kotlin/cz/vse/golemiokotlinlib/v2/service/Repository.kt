@@ -23,7 +23,7 @@ import cz.vse.golemiokotlinlib.v2.entity.responsedata.WasteStationsPickDays
 import cz.vse.golemiokotlinlib.v2.entity.responsedata.WasteStationsPicks
 
 /**
- * Client for handling all types of API requests.
+ * Exposed client for handling all types of API requests.
  * Designed to match the API architecture.
  * For further information about data structures, please visit the api doc.
  *
@@ -32,31 +32,6 @@ import cz.vse.golemiokotlinlib.v2.entity.responsedata.WasteStationsPicks
  * todo split into more specific clients
  */
 interface Repository {
-    /**
-     * @return A list of [AirQualityStation]s.
-     */
-    suspend fun getAllAirQualityStations(
-        // todo zminit odchyleni latlng
-        latlng: Pair<String, String>?,
-        range: Int?,
-        districts: List<String>?,
-        limit: Int?,
-        offset: Int?,
-        updatedSince: String?,
-    ): List<AirQualityStation>
-
-    /**
-     * @return [AirQualityStationHistory].
-     * TODO v textu poreferovat ze Golemio v "try it out" nic nevraci
-     * TODO edit - vraci, ale musi se zmenit rok na pozdejsi - kam az?
-     */
-    suspend fun getAirQualityStationsHistory(
-        sensorId: String,
-        limit: Int?,
-        offset: Int?,
-        from: String?,
-        to: String?,
-    ): List<AirQualityStationHistory>
 
     /**
      * @return A list of [BicycleCounter]s.

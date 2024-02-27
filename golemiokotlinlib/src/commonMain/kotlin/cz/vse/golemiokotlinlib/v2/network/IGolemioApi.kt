@@ -29,7 +29,7 @@ import cz.vse.golemiokotlinlib.v2.service.WasteStationAccessibility
 /**
  * Manages connection to Golemio API and retrieves data.
  */
-interface IGolemioApi {
+internal interface IGolemioApi {
 
     /**
      * @return A list of [AirQualityStation]s..
