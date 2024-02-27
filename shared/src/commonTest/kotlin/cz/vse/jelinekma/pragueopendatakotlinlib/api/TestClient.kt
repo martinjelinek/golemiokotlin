@@ -22,7 +22,7 @@ class TestClient {
 
     @BeforeTest
     fun setUp() {
-        client = RemoteRepository()
+        client = RemoteRepository(xAccessToken)
     }
 
     // region air-quality

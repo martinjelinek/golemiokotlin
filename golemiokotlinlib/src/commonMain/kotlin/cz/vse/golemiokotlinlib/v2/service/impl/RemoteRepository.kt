@@ -14,7 +14,8 @@ import cz.vse.golemiokotlinlib.v2.network.IGolemioApi
  * Client for handling all types of API requests.
  */
 class RemoteRepository(
-    private val api: IGolemioApi = GolemioApi()
+    private val apiKey: String,
+    private val api: IGolemioApi = GolemioApi(apiKey)
 ) : Repository {
 
     // region air-quality
