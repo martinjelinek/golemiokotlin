@@ -8,7 +8,6 @@ import cz.vse.golemiokotlinlib.v2.entity.responsedata.WasteStationsPicks
 
 interface ISortedWasteStationsRepository {
 
-
     /**
      * @param latlng sorting by location (latitude first)
      * @param range filter by distance from latlng in meters (range query), depends on the latlng parameter

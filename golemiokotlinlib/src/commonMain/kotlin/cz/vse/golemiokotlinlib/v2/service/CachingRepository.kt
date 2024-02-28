@@ -4,6 +4,7 @@ import kotlin.jvm.JvmName
 
 /**
  * Open class handling common logic for caching.
+ * All caching repos provide non-persistent cache using kotlin collections.
  */
 open class CachingRepository {
 
