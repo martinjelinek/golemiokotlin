@@ -24,7 +24,7 @@ data class AirQualityStationsProperties(
 
 @Serializable
 data class Measurement(
-    @SerialName("hourly_index")
+    @SerialName("AQ_hourly_index")
     val aqHourlyIndex: String? = null,
     val components: List<Component>? = null
 )
