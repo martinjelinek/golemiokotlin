@@ -22,3 +22,9 @@ data class WasteStationMeasurements(
     @SerialName("updated_at")
     val updatedAt: Long
 ): ResponseData
+
+enum class WasteStationAccessibility(val accessibility: Int) {
+    ACCESSIBLE(1),
+    HOUSE_RESIDENTS_ONLY(2),
+    UNKNOWN(3)
+}

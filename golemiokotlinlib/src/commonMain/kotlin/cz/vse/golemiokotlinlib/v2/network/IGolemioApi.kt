@@ -15,16 +15,16 @@ import cz.vse.golemiokotlinlib.v2.entity.featurescollection.WasteCollection
 import cz.vse.golemiokotlinlib.v2.entity.responsedata.AirQualityStationHistory
 import cz.vse.golemiokotlinlib.v2.entity.responsedata.BicycleCounterDetection
 import cz.vse.golemiokotlinlib.v2.entity.responsedata.BicycleCounterTemperature
+import cz.vse.golemiokotlinlib.v2.entity.responsedata.MedicalGroup
 import cz.vse.golemiokotlinlib.v2.entity.responsedata.MedicalInstitutionTypes
 import cz.vse.golemiokotlinlib.v2.entity.responsedata.MunicipalAuthorityQueue
+import cz.vse.golemiokotlinlib.v2.entity.responsedata.MunicipalAuthorityType
 import cz.vse.golemiokotlinlib.v2.entity.responsedata.ParkingsV1History
 import cz.vse.golemiokotlinlib.v2.entity.responsedata.PlaygroundProperties
+import cz.vse.golemiokotlinlib.v2.entity.responsedata.WasteStationAccessibility
 import cz.vse.golemiokotlinlib.v2.entity.responsedata.WasteStationMeasurements
 import cz.vse.golemiokotlinlib.v2.entity.responsedata.WasteStationsPickDays
 import cz.vse.golemiokotlinlib.v2.entity.responsedata.WasteStationsPicks
-import cz.vse.golemiokotlinlib.v2.service.MedicalGroup
-import cz.vse.golemiokotlinlib.v2.service.MunicipalAuthorityType
-import cz.vse.golemiokotlinlib.v2.service.WasteStationAccessibility
 
 /**
  * Manages connection to Golemio API and retrieves data.

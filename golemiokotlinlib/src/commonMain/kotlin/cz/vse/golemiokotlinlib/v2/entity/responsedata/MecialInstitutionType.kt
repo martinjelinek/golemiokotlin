@@ -9,3 +9,8 @@ data class MedicalInstitutionTypes(
     @SerialName("health_care")
     val healthCare: List<String>? = null,
 ) : ResponseData
+
+enum class MedicalGroup(val group: String) {
+    PHARMACIES("pharmacies"),
+    HEALTH_CARE("health_care"),
+}

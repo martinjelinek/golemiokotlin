@@ -24,3 +24,8 @@ data class MunicipalAuthorityQueue(
     val updatedAt: String,
     val title: String
 ) : ResponseData
+
+enum class MunicipalAuthorityType(val type: String) {
+    MUNICIPALITY("municipality"),
+    CITY_HALL("city_hall"),
+}
