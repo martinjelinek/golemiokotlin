@@ -18,11 +18,7 @@ internal open class RemoteRepository(
 
     // endregion
     // region city-districts
-    override suspend fun getAllCityDistricts(
-        latlng: Pair<String, String>?, range: Int?, limit: Int?, offset: Int?, updatedSince: String?
-    ) = api.getAllCityDistricts(latlng, range, limit, offset, updatedSince)
 
-    override suspend fun getCityDistrictById(id: String) = api.getCityDistrictById(id)
 
     // endregion
     // region gardens

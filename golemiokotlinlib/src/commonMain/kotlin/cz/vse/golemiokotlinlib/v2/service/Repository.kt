@@ -34,24 +34,6 @@ import cz.vse.golemiokotlinlib.v2.entity.responsedata.WasteStationsPicks
 interface Repository {
 
     /**
-     * @return A list of [CityDistrict]s.
-     */
-    suspend fun getAllCityDistricts(
-        latlng: Pair<String, String>?,
-        range: Int?,
-        limit: Int?,
-        offset: Int?,
-        updatedSince: String?
-    ): List<CityDistrict>
-
-    /**
-     * Gets [CityDistrict] by it's [id].
-     */
-    suspend fun getCityDistrictById(
-        id: String
-    ): CityDistrict
-
-    /**
      * @param latlng sorting by location (latitude first)
      * @param range filter by distance from latlng in meters (range query), depends on the latlng parameter
      * @param districts filter by Prague city districts (slug) separated by comma; example: praha-4

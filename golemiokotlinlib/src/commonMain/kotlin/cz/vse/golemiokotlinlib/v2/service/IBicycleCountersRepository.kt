@@ -5,7 +5,7 @@ import cz.vse.golemiokotlinlib.v2.entity.responsedata.BicycleCounterDetection
 import cz.vse.golemiokotlinlib.v2.entity.responsedata.BicycleCounterTemperature
 
 /**
- * Interface for remote repository handling bicycle counters data requests.
+ * Interface for repositories handling bicycle counters data requests.
  */
 interface IBicycleCountersRepository {
 
