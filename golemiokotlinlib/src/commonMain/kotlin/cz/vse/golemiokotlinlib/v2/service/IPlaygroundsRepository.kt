@@ -3,6 +3,7 @@ package cz.vse.golemiokotlinlib.v2.service
 import cz.vse.golemiokotlinlib.v2.entity.featurescollection.Playground
 import cz.vse.golemiokotlinlib.v2.entity.responsedata.PlaygroundProperties
 
+// TODO
 interface IPlaygroundsRepository {
 
     /**

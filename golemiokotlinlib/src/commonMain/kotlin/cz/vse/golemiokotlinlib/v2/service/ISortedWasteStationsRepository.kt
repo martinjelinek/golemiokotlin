@@ -6,6 +6,7 @@ import cz.vse.golemiokotlinlib.v2.entity.responsedata.WasteStationMeasurements
 import cz.vse.golemiokotlinlib.v2.entity.responsedata.WasteStationsPickDays
 import cz.vse.golemiokotlinlib.v2.entity.responsedata.WasteStationsPicks
 
+// TODO
 interface ISortedWasteStationsRepository {
 
     /**

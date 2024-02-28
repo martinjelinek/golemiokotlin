@@ -2,6 +2,7 @@ package cz.vse.golemiokotlinlib.v2.service
 
 import cz.vse.golemiokotlinlib.v2.entity.featurescollection.MunicipalPoliceStation
 
+// TODO
 interface IMunicipalPoliceStationsRepository {
 
     /**

@@ -3,6 +3,7 @@ package cz.vse.golemiokotlinlib.v2.service
 import cz.vse.golemiokotlinlib.v2.entity.featurescollection.ParkingV1
 import cz.vse.golemiokotlinlib.v2.entity.featurescollection.ParkingV2
 
+// TODO
 interface IParkingRepository {
 
     /**

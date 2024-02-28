@@ -5,6 +5,9 @@ import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 
+/**
+ * Tests municipal authorities client.
+ */
 class TestMunicipalAuthorityClient : TestClient() {
 
     private lateinit var client: MunicipalAuthoritiesClient
@@ -13,7 +16,6 @@ class TestMunicipalAuthorityClient : TestClient() {
     fun setUp() {
         client = MunicipalAuthoritiesClient(apiKey)
     }
-
 
     @Test
     fun testGetAllMunicipalAuthorities() = runTest {
