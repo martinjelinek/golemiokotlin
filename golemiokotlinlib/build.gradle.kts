@@ -21,7 +21,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "pragueopendatakoltinLib"
+            baseName = "golemiokotlin"
             isStatic = true
         }
     }
@@ -57,7 +57,7 @@ kotlin {
 }
 
 android {
-    namespace = "cz.vse.jelinekma.pragueopendatakoltinlib"
+    namespace = "cz.vse.golemiokotlin"
     compileSdk = (findProperty("android.compileSdk") as String).toInt()
     defaultConfig {
         minSdk = (findProperty("android.minSdk") as String).toInt()
