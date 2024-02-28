@@ -1,7 +1,7 @@
 package cz.vse.golemiokotlinlib.v2.service
 
 import cz.vse.golemiokotlinlib.v2.entity.featurescollection.ParkingV1
-import cz.vse.golemiokotlinlib.v2.entity.featurescollection.ParkingV2
+import cz.vse.golemiokotlinlib.v2.entity.featurescollection.Parking
 
 // TODO
 interface IParkingRepository {
@@ -16,7 +16,7 @@ interface IParkingRepository {
      *
      * @return A list of [ParkingV1]s.
      */
-    suspend fun getAllParkingsV2(
+    suspend fun getAllParkings(
         latlng: Pair<String, String>?,
         range: Int?,
         source: String?,
@@ -27,35 +27,35 @@ interface IParkingRepository {
         offset: Int?,
         minutesBefore: Int?,
         updatedSince: String?,
-    ): List<ParkingV2>
+    ): List<Parking>
 
     /**
-     * @return [ParkingV2] by it's [id].
+     * @return [Parking] by it's [id].
      */
-    suspend fun getParkingV2ById(id: String): ParkingV2
-
-    /**
-     * todo
-     */
-    suspend fun getParkingV2Detail()
+    suspend fun getParkingById(id: String): Parking
 
     /**
      * todo
      */
-    suspend fun getParkingV2DetailById(id: String?)
+    suspend fun getParkingDetail()
 
     /**
      * todo
      */
-    suspend fun getParkingV2Measurements()
+    suspend fun getParkingDetailById(id: String?)
 
     /**
      * todo
      */
-    suspend fun getParkingV2Tariffs()
+    suspend fun getParkingMeasurements()
 
     /**
      * todo
      */
-    suspend fun getParkingV2TariffsByTariffId()
+    suspend fun getParkingTariffs()
+
+    /**
+     * todo
+     */
+    suspend fun getParkingTariffsByTariffId()
 }

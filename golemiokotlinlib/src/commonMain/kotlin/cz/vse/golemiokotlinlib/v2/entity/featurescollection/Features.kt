@@ -64,7 +64,7 @@ data class ParkingV1(
 ) : Feature()
 
 @Serializable
-data class ParkingV2(
+data class Parking(
     override val properties: ParkingV2Properties? = null
 ) : Feature()
 

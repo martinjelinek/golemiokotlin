@@ -13,7 +13,7 @@ import cz.vse.golemiokotlinlib.v2.entity.featurescollection.MunicipalAuthority
 import cz.vse.golemiokotlinlib.v2.entity.featurescollection.MunicipalLibrary
 import cz.vse.golemiokotlinlib.v2.entity.featurescollection.MunicipalPoliceStation
 import cz.vse.golemiokotlinlib.v2.entity.featurescollection.ParkingV1
-import cz.vse.golemiokotlinlib.v2.entity.featurescollection.ParkingV2
+import cz.vse.golemiokotlinlib.v2.entity.featurescollection.Parking
 import cz.vse.golemiokotlinlib.v2.entity.featurescollection.Playground
 import cz.vse.golemiokotlinlib.v2.entity.featurescollection.WasteCollection
 import cz.vse.golemiokotlinlib.v2.entity.responsedata.AirQualityStationHistory
@@ -343,7 +343,7 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
 
     //endregion
     // region parking-v2
-    override suspend fun getAllParkingsV2(
+    override suspend fun getAllParkings(
         latlng: Pair<String, String>?,
         range: Int?,
         source: String?,
@@ -353,31 +353,31 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
         offset: Int?,
         minutesBefore: Int?,
         updatedSince: String?
-    ): List<ParkingV2> {
+    ): List<Parking> {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getParkingV2ById(id: String): ParkingV2 {
+    override suspend fun getParkingById(id: String): Parking {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getParkingV2Detail() {
+    override suspend fun getParkingDetail() {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getParkingV2DetailById(id: String?) {
+    override suspend fun getParkingDetailById(id: String?) {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getParkingV2Measurements() {
+    override suspend fun getParkingMeasurements() {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getParkingV2Tariffs() {
+    override suspend fun getParkingTariffs() {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getParkingV2TariffsByTariffId() {
+    override suspend fun getParkingTariffsByTariffId() {
         TODO("Not yet implemented")
     }
 
