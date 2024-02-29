@@ -1,9 +1,15 @@
 package cz.vse.jelinekma.pragueopendatakotlinlib
 
 import cz.vse.golemiokotlinlib.v2.client.AirQualityClient
+import cz.vse.golemiokotlinlib.v2.entity.featurescollection.AveragedTime
+import cz.vse.golemiokotlinlib.v2.entity.featurescollection.Component
+import cz.vse.golemiokotlinlib.v2.entity.featurescollection.Measurement
+import cz.vse.golemiokotlinlib.v2.entity.responsedata.AirQualityStationHistory
 import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 /**
  * Class for testing all API requests.
@@ -19,7 +25,7 @@ class TestAirQualityClient : TestClient() {
 
     @Test
     fun testGetAllAirQualityStation() = runTest {
-        client.getAllAirQualityStations(
+        val testData = client.getAllAirQualityStations(
             latlng = latlng,
             range = range,
             districts = null,
@@ -27,16 +33,46 @@ class TestAirQualityClient : TestClient() {
             offset = offset,
             updatedSince = updatedSince,
         )
+
+        assertTrue { testData.isNotEmpty() }
     }
 
     @Test
     fun testGetAirHistoryData() = runTest {
-        client.getAirQualityStationsHistory(
+
+        val testData = client.getAirQualityStationsHistory(
             sensorId = "ACHOA",
             limit = limit,
             offset = offset,
             from = from,
             to = to,
+        )
+
+        assertEquals(getHistoryDummyData(), testData)
+    }
+
+    private fun getHistoryDummyData(): List<AirQualityStationHistory> {
+        return listOf(
+            AirQualityStationHistory(
+                "ACHOA",
+                Measurement(
+                    "2B",
+                    listOf(
+                        Component(AveragedTime(3, 12.8), "NO2"),
+                        Component(AveragedTime(3, 23.4), "PM10")
+                    )
+                )
+            ),
+            AirQualityStationHistory(
+                "ACHOA",
+                Measurement(
+                    "2B",
+                    listOf(
+                        Component(AveragedTime(3, 9.8), "NO2"),
+                        Component(AveragedTime(3, 18.2), "PM10")
+                    )
+                )
+            )
         )
     }
 }

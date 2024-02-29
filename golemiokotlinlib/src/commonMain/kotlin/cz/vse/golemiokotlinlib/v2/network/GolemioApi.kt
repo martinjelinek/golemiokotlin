@@ -586,7 +586,7 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
     }
 
     companion object {
-        private const val API_URL = "https://api.golemio.cz/v2/"
+        internal const val API_URL = "https://api.golemio.cz/v2/"
     }
 }
 

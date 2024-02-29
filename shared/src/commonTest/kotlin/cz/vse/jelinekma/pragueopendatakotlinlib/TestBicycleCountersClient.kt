@@ -4,6 +4,7 @@ import cz.vse.golemiokotlinlib.v2.client.BicycleCountersClient
 import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
+import kotlin.test.assertTrue
 
 class TestBicycleCountersClient : TestClient() {
 
@@ -16,17 +17,19 @@ class TestBicycleCountersClient : TestClient() {
 
     @Test
     fun testGetAllBicycleCounters() = runTest {
-        client.getAllBicycleCounters(
+        val testData = client.getAllBicycleCounters(
             latlng = latlng,
             limit = limit,
             offset = offset,
             range = range,
         )
+
+        assertTrue { testData.isNotEmpty() }
     }
 
     @Test
     fun testGetBicycleCounterDetections() = runTest {
-        client.getBicycleCountersDetections(
+        val testData = client.getBicycleCountersDetections(
             limit = limit,
             offset = offset,
             from = from,
@@ -34,11 +37,13 @@ class TestBicycleCountersClient : TestClient() {
             aggregate = false,
             id = "camea-BC_ZA-BO"
         )
+
+        assertTrue { testData.isNotEmpty() }
     }
 
     @Test
     fun testGetBicycleCounterTemperature() = runTest {
-        client.getBicycleCountersTemperatures(
+        val testData = client.getBicycleCountersTemperatures(
             limit = limit,
             offset = offset,
             from = from,
@@ -46,5 +51,7 @@ class TestBicycleCountersClient : TestClient() {
             aggregate = false,
             ids = null
         )
+
+        assertTrue { testData.isNotEmpty() }
     }
 }

@@ -9,8 +9,6 @@ data class BicycleCounterDetection(
     val value: Int,
     @SerialName("value_pedestrians")
     val valuePedestrians: Int,
-    @SerialName("locations_id")
-    val locationsId: String,
     @SerialName("measured_from")
     val measuredFrom: String,
     @SerialName("measured_to")
@@ -23,8 +21,6 @@ data class BicycleCounterDetection(
 data class BicycleCounterTemperature(
     val id: String,
     val value: Int,
-    @SerialName("locations_id")
-    val locationsId: String,
     @SerialName("measured_from")
     val measuredFrom: String,
     @SerialName("measured_to")

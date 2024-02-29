@@ -1,4 +1,4 @@
-package cz.vse.jelinekma.pragueopendatakotlinlib.dummyData
+package cz.vse.golemiokotlinlib.v2.network
 
 /**
  * Object containing API key.

@@ -6,7 +6,7 @@ import cz.vse.golemiokotlinlib.v2.service.CachingRepository
 import cz.vse.golemiokotlinlib.v2.service.IMunicipalPoliceStationsRepository
 import cz.vse.golemiokotlinlib.v2.service.impl.remote.MunicipalPoliceStationsRemoteRepository
 
-class MunicipalPoliceStationsCachingRepository(
+internal class MunicipalPoliceStationsCachingRepository(
     private val remoteRepository: IMunicipalPoliceStationsRepository
 ) : IMunicipalPoliceStationsRepository, CachingRepository() {
 

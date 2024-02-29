@@ -1,32 +1,47 @@
 package cz.vse.jelinekma.pragueopendatakotlinlib
 
-class TestPlaygroundsClient {
-    //    // region playgrounds
-//    @Test
-//    fun testGetAllPlaygrounds() = runTest {
-//        val params = GetAllRequestParams()
-//        params.set(
-//            limit = 10,
-//            offset = 0,
-//            range = 5000,
-//            districts = listOf("praha-4"),
-//            updatedSince = "2023-05-18T07:38:37.000Z"
-//        )
-//        val data = client.getAllPlaygrounds(
-//            params = params
-//        )
-//    }
-//    @Test
-//    fun testGetPlaygroundById() = runTest {
-//        val data = client.getPlaygroundById("370")
-//    }
-//    // endregion
-//    // region waste-collection
-//    @Test
-//    fun testGetAllWasteCollection() = runTest {
-//        // todo
-//        val params = GetAllRequestParams()
-//        val data = client.getAllWasteCollections(params)
-//    }
-//    // endregion
+import cz.vse.golemiokotlinlib.v2.client.PlaygroundsClient
+import cz.vse.jelinekma.pragueopendatakotlinlib.dummyData.ApiKeyLocal
+import kotlinx.coroutines.test.runTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
+
+class TestPlaygroundsClient : TestClient() {
+
+    private lateinit var client: PlaygroundsClient
+
+    @BeforeTest
+    fun setUp() {
+        client = PlaygroundsClient(ApiKeyLocal.API_KEY)
+    }
+
+    @Test
+    fun testAllPlaygrounds() = runTest {
+        val data = client.getAllPlaygrounds(
+            latlng,
+            range,
+            null,
+            limit,
+            offset,
+            updatedSince
+        )
+
+        assertTrue { data.isNotEmpty() }
+    }
+
+    @Test
+    fun testGetPlaygroundById() = runTest {
+        val data = client.getPlaygroundById("2")
+
+        assertEquals(data.properties?.id, 2)
+    }
+
+    @Test
+    fun testGetProperties() = runTest {
+        val data = client.getPlaygroundsProperties()
+
+        assertTrue { data.isNotEmpty() }
+    }
 }

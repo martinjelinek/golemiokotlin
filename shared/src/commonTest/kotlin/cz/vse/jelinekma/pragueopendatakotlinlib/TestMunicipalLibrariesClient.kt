@@ -1,28 +1,40 @@
 package cz.vse.jelinekma.pragueopendatakotlinlib
 
-class TestMunicipalLibrariesClient {
+import cz.vse.golemiokotlinlib.v2.client.MunicipalLibrariesClient
+import cz.vse.jelinekma.pragueopendatakotlinlib.dummyData.ApiKeyLocal
+import kotlinx.coroutines.test.runTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
-    //    // region municipal-libraries
-//    @Test
-//    fun testAllMunicipalLibraries() = runTest {
-//        val params = GetAllRequestParams()
-//        params.set(
-//            limit = 10,
-//            offset = 0,
-//            range = 5000,
-//            districts = listOf("praha-4"),
-//            updatedSince = "2023-05-18T07:38:37.000Z"
-//        )
-//        val data = client.getAllMunicipalLibraries(
-//            params = params
-//        )
-//    }
-//
-//    @Test
-//    fun getMunicipalLibraryById() = runTest {
-//        // todo zminit ze v golemiu nabizi blby id na testovani
-//        // todo spatny ID vraci chybu - podchytit, mozna staci jen vratit null - content type je totiz null
-//        val data = client.getMunicipalLibraryById("2")
-//    }
-//    // endregion
+class TestMunicipalLibrariesClient : TestClient() {
+
+    private lateinit var client: MunicipalLibrariesClient
+
+    @BeforeTest
+    fun setUp() {
+        client = MunicipalLibrariesClient(ApiKeyLocal.API_KEY)
+    }
+
+    @Test
+    fun testAllMunicipalLibraries() = runTest {
+        val data = client.getAllMunicipalLibraries(
+            latlng,
+            range,
+            null,
+            limit,
+            offset,
+            updatedSince
+        )
+
+        assertTrue { data.isNotEmpty() }
+    }
+
+    @Test
+    fun getMunicipalLibraryById() = runTest {
+        val data = client.getMunicipalLibraryById("2")
+
+        assertEquals(data.properties?.name, "Barrandov")
+    }
 }
