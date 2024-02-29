@@ -13,7 +13,6 @@ import cz.vse.golemiokotlinlib.common.entity.featurescollection.MunicipalAuthori
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.MunicipalLibrary
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.MunicipalPoliceStation
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.ParkingV1
-import cz.vse.golemiokotlinlib.common.entity.featurescollection.Parking
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.Playground
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.WasteCollection
 import cz.vse.golemiokotlinlib.common.entity.responsedata.AirQualityStationHistory
@@ -340,47 +339,6 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
         RequestParamsBuilder.getTo(to),
         RequestParamsBuilder.getSensorId(sensorId),
     )
-
-    //endregion
-    // region parking-v2
-    override suspend fun getAllParkings(
-        latlng: Pair<String, String>?,
-        range: Int?,
-        source: String?,
-        sourceId: String?,
-        category: List<String>,
-        limit: Int?,
-        offset: Int?,
-        minutesBefore: Int?,
-        updatedSince: String?
-    ): List<Parking> {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun getParkingById(id: String): Parking {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun getParkingDetail() {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun getParkingDetailById(id: String?) {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun getParkingMeasurements() {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun getParkingTariffs() {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun getParkingTariffsByTariffId() {
-        TODO("Not yet implemented")
-    }
-
     // endregion
     // region playgrounds
     override suspend fun getAllPlaygrounds(

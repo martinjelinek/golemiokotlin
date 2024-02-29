@@ -9,7 +9,6 @@ import cz.vse.golemiokotlinlib.common.entity.featurescollection.MunicipalAuthori
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.MunicipalLibrary
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.MunicipalPoliceStation
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.ParkingV1
-import cz.vse.golemiokotlinlib.common.entity.featurescollection.Parking
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.Playground
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.WasteCollection
 import cz.vse.golemiokotlinlib.common.entity.responsedata.AirQualityStationHistory
@@ -275,52 +274,6 @@ interface IGolemioApi {
         to: String?,
         sensorId: String,
     ) : List<ParkingsV1History>
-
-    /**
-     * @return A list of [Parking].
-     */
-    suspend fun getAllParkings(
-        latlng: Pair<String, String>?,
-        range: Int?,
-        source: String?,
-        sourceId: String?,
-        // TODO implement category
-        category: List<String>,
-        limit: Int?,
-        offset: Int?,
-        minutesBefore: Int?,
-        updatedSince: String?,
-    ): List<Parking>
-
-    /**
-     * @return [Parking] by it's [id].
-     */
-    suspend fun getParkingById(id: String): Parking
-
-    /**
-     * todo
-     */
-    suspend fun getParkingDetail()
-
-    /**
-     * todo
-     */
-    suspend fun getParkingDetailById(id: String?)
-
-    /**
-     * todo
-     */
-    suspend fun getParkingMeasurements()
-
-    /**
-     * todo
-     */
-    suspend fun getParkingTariffs()
-
-    /**
-     * todo
-     */
-    suspend fun getParkingTariffsByTariffId()
 
     /**
      * @param latlng sorting by location (latitude first)
