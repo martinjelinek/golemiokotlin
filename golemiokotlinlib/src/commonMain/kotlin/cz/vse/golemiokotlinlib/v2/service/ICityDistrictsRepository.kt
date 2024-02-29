@@ -1,6 +1,6 @@
 package cz.vse.golemiokotlinlib.v2.service
 
-import cz.vse.golemiokotlinlib.v2.entity.featurescollection.CityDistrict
+import cz.vse.golemiokotlinlib.common.entity.featurescollection.CityDistrict
 
 /**
  * Interface for repositories handling city districts data requests.

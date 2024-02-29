@@ -1,6 +1,6 @@
 package cz.vse.golemiokotlinlib.v2.client
 
-import cz.vse.golemiokotlinlib.v2.entity.featurescollection.CityDistrict
+import cz.vse.golemiokotlinlib.common.entity.featurescollection.CityDistrict
 import cz.vse.golemiokotlinlib.v2.service.ICityDistrictsRepository
 import cz.vse.golemiokotlinlib.v2.service.impl.cache.CityDistrictsCachingRepository
 

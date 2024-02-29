@@ -1,8 +1,8 @@
 package cz.vse.golemiokotlinlib.v2.service
 
-import cz.vse.golemiokotlinlib.v2.entity.featurescollection.MedicalInstitution
-import cz.vse.golemiokotlinlib.v2.entity.responsedata.MedicalGroup
-import cz.vse.golemiokotlinlib.v2.entity.responsedata.MedicalInstitutionTypes
+import cz.vse.golemiokotlinlib.common.entity.featurescollection.MedicalInstitution
+import cz.vse.golemiokotlinlib.common.entity.responsedata.MedicalGroup
+import cz.vse.golemiokotlinlib.common.entity.responsedata.MedicalInstitutionTypes
 
 interface IMedicalInstitutionsRepository {
 

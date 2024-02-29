@@ -1,11 +1,9 @@
 package cz.vse.golemiokotlinlib.v2.service.impl.cache
 
-import cz.vse.golemiokotlinlib.v2.entity.featurescollection.BicycleCounter
-import cz.vse.golemiokotlinlib.v2.entity.featurescollection.Playground
-import cz.vse.golemiokotlinlib.v2.entity.responsedata.BicycleCounterDetection
-import cz.vse.golemiokotlinlib.v2.entity.responsedata.PlaygroundProperties
-import cz.vse.golemiokotlinlib.v2.network.GolemioApi
-import cz.vse.golemiokotlinlib.v2.service.CachingRepository
+import cz.vse.golemiokotlinlib.common.entity.featurescollection.Playground
+import cz.vse.golemiokotlinlib.common.entity.responsedata.PlaygroundProperties
+import cz.vse.golemiokotlinlib.common.network.GolemioApi
+import cz.vse.golemiokotlinlib.common.service.impl.cache.CachingRepository
 import cz.vse.golemiokotlinlib.v2.service.IPlaygroundsRepository
 import cz.vse.golemiokotlinlib.v2.service.impl.remote.PlaygroundsRemoteRepository
 

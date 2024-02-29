@@ -1,6 +1,6 @@
 package cz.vse.golemiokotlinlib.v2.service
 
-import cz.vse.golemiokotlinlib.v2.entity.featurescollection.Garden
+import cz.vse.golemiokotlinlib.common.entity.featurescollection.Garden
 
 interface IGardensRepository {
 

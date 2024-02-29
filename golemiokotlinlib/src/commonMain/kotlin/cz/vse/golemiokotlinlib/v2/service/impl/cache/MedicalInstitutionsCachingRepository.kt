@@ -1,10 +1,10 @@
 package cz.vse.golemiokotlinlib.v2.service.impl.cache
 
-import cz.vse.golemiokotlinlib.v2.entity.featurescollection.MedicalInstitution
-import cz.vse.golemiokotlinlib.v2.entity.responsedata.MedicalGroup
-import cz.vse.golemiokotlinlib.v2.entity.responsedata.MedicalInstitutionTypes
-import cz.vse.golemiokotlinlib.v2.network.GolemioApi
-import cz.vse.golemiokotlinlib.v2.service.CachingRepository
+import cz.vse.golemiokotlinlib.common.entity.featurescollection.MedicalInstitution
+import cz.vse.golemiokotlinlib.common.entity.responsedata.MedicalGroup
+import cz.vse.golemiokotlinlib.common.entity.responsedata.MedicalInstitutionTypes
+import cz.vse.golemiokotlinlib.common.network.GolemioApi
+import cz.vse.golemiokotlinlib.common.service.impl.cache.CachingRepository
 import cz.vse.golemiokotlinlib.v2.service.IMedicalInstitutionsRepository
 import cz.vse.golemiokotlinlib.v2.service.impl.remote.MedicalInstitutionsRemoteRepository
 

@@ -1,7 +1,7 @@
 package cz.vse.golemiokotlinlib.v2.service
 
-import cz.vse.golemiokotlinlib.v2.entity.featurescollection.AirQualityStation
-import cz.vse.golemiokotlinlib.v2.entity.responsedata.AirQualityStationHistory
+import cz.vse.golemiokotlinlib.common.entity.featurescollection.AirQualityStation
+import cz.vse.golemiokotlinlib.common.entity.responsedata.AirQualityStationHistory
 
 /**
  * Interface for remote repository handling air quality data requests.

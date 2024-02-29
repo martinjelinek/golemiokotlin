@@ -1,6 +1,6 @@
 package cz.vse.golemiokotlinlib.v2.client
 
-import cz.vse.golemiokotlinlib.v2.entity.featurescollection.Garden
+import cz.vse.golemiokotlinlib.common.entity.featurescollection.Garden
 import cz.vse.golemiokotlinlib.v2.service.IGardensRepository
 import cz.vse.golemiokotlinlib.v2.service.impl.cache.GardensCachingRepository
 
