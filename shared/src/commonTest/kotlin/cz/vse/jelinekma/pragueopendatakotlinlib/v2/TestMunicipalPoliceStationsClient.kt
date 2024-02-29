@@ -1,6 +1,7 @@
-package cz.vse.jelinekma.pragueopendatakotlinlib
+package cz.vse.jelinekma.pragueopendatakotlinlib.v2
 
 import cz.vse.golemiokotlinlib.v2.client.MunicipalPoliceStationsClient
+import cz.vse.jelinekma.pragueopendatakotlinlib.TestClient
 import cz.vse.jelinekma.pragueopendatakotlinlib.dummyData.ApiKeyLocal
 import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest

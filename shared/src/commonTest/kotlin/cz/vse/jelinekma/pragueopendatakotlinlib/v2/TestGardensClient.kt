@@ -1,6 +1,7 @@
-package cz.vse.jelinekma.pragueopendatakotlinlib
+package cz.vse.jelinekma.pragueopendatakotlinlib.v2
 
 import cz.vse.golemiokotlinlib.v2.client.GardensClient
+import cz.vse.jelinekma.pragueopendatakotlinlib.TestClient
 import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test

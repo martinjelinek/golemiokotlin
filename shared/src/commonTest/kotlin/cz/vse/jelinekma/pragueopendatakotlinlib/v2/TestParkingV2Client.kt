@@ -1,6 +1,6 @@
-package cz.vse.jelinekma.pragueopendatakotlinlib
+package cz.vse.jelinekma.pragueopendatakotlinlib.v2
 
-class TestParkingClient {
+class TestParkingV2Client {
     //    // region parking-v2
 //    @Test
 //    fun testGetAllParkingV2() = runTest {
