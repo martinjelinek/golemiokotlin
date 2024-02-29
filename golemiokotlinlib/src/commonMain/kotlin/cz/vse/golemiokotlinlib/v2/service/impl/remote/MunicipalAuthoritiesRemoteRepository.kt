@@ -1,7 +1,7 @@
 package cz.vse.golemiokotlinlib.v2.service.impl.remote
 
-import cz.vse.golemiokotlinlib.v2.entity.responsedata.MunicipalAuthorityType
-import cz.vse.golemiokotlinlib.v2.network.IGolemioApi
+import cz.vse.golemiokotlinlib.common.entity.responsedata.MunicipalAuthorityType
+import cz.vse.golemiokotlinlib.common.network.IGolemioApi
 import cz.vse.golemiokotlinlib.v2.service.IMunicipalAuthoritiesRepository
 
 /**

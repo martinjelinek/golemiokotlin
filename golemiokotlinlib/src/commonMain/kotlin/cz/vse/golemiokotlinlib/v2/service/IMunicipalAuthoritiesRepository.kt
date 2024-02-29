@@ -1,8 +1,8 @@
 package cz.vse.golemiokotlinlib.v2.service
 
-import cz.vse.golemiokotlinlib.v2.entity.featurescollection.MunicipalAuthority
-import cz.vse.golemiokotlinlib.v2.entity.responsedata.MunicipalAuthorityQueue
-import cz.vse.golemiokotlinlib.v2.entity.responsedata.MunicipalAuthorityType
+import cz.vse.golemiokotlinlib.common.entity.featurescollection.MunicipalAuthority
+import cz.vse.golemiokotlinlib.common.entity.responsedata.MunicipalAuthorityQueue
+import cz.vse.golemiokotlinlib.common.entity.responsedata.MunicipalAuthorityType
 
 internal interface IMunicipalAuthoritiesRepository {
 

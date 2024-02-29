@@ -1,10 +1,10 @@
 package cz.vse.jelinekma.pragueopendatakotlinlib
 
 import cz.vse.golemiokotlinlib.v2.client.AirQualityClient
-import cz.vse.golemiokotlinlib.v2.entity.featurescollection.AveragedTime
-import cz.vse.golemiokotlinlib.v2.entity.featurescollection.Component
-import cz.vse.golemiokotlinlib.v2.entity.featurescollection.Measurement
-import cz.vse.golemiokotlinlib.v2.entity.responsedata.AirQualityStationHistory
+import cz.vse.golemiokotlinlib.common.entity.featurescollection.AveragedTime
+import cz.vse.golemiokotlinlib.common.entity.featurescollection.Component
+import cz.vse.golemiokotlinlib.common.entity.featurescollection.Measurement
+import cz.vse.golemiokotlinlib.common.entity.responsedata.AirQualityStationHistory
 import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test

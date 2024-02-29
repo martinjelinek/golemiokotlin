@@ -1,8 +1,8 @@
 package cz.vse.golemiokotlinlib.v2.service
 
-import cz.vse.golemiokotlinlib.v2.entity.featurescollection.BicycleCounter
-import cz.vse.golemiokotlinlib.v2.entity.responsedata.BicycleCounterDetection
-import cz.vse.golemiokotlinlib.v2.entity.responsedata.BicycleCounterTemperature
+import cz.vse.golemiokotlinlib.common.entity.featurescollection.BicycleCounter
+import cz.vse.golemiokotlinlib.common.entity.responsedata.BicycleCounterDetection
+import cz.vse.golemiokotlinlib.common.entity.responsedata.BicycleCounterTemperature
 
 /**
  * Interface for repositories handling bicycle counters data requests.

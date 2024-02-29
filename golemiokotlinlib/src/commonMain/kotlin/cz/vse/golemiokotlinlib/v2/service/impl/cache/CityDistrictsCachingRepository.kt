@@ -1,8 +1,8 @@
 package cz.vse.golemiokotlinlib.v2.service.impl.cache
 
-import cz.vse.golemiokotlinlib.v2.entity.featurescollection.CityDistrict
-import cz.vse.golemiokotlinlib.v2.network.GolemioApi
-import cz.vse.golemiokotlinlib.v2.service.CachingRepository
+import cz.vse.golemiokotlinlib.common.entity.featurescollection.CityDistrict
+import cz.vse.golemiokotlinlib.common.network.GolemioApi
+import cz.vse.golemiokotlinlib.common.service.impl.cache.CachingRepository
 import cz.vse.golemiokotlinlib.v2.service.ICityDistrictsRepository
 import cz.vse.golemiokotlinlib.v2.service.impl.remote.BicycleCountersRemoteRepository
 import cz.vse.golemiokotlinlib.v2.service.impl.remote.CityDistrictsRemoteRepository

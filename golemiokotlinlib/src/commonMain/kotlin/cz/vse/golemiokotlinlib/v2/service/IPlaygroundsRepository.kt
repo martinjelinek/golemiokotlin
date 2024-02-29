@@ -1,7 +1,7 @@
 package cz.vse.golemiokotlinlib.v2.service
 
-import cz.vse.golemiokotlinlib.v2.entity.featurescollection.Playground
-import cz.vse.golemiokotlinlib.v2.entity.responsedata.PlaygroundProperties
+import cz.vse.golemiokotlinlib.common.entity.featurescollection.Playground
+import cz.vse.golemiokotlinlib.common.entity.responsedata.PlaygroundProperties
 
 // TODO
 interface IPlaygroundsRepository {

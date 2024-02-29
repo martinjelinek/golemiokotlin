@@ -1,8 +1,8 @@
 package cz.vse.jelinekma.pragueopendatakotlinlib
 
 import cz.vse.golemiokotlinlib.v2.client.MedicalInstitutionsClient
-import cz.vse.golemiokotlinlib.v2.entity.responsedata.MedicalGroup
-import cz.vse.golemiokotlinlib.v2.entity.responsedata.MedicalInstitutionTypes
+import cz.vse.golemiokotlinlib.common.entity.responsedata.MedicalGroup
+import cz.vse.golemiokotlinlib.common.entity.responsedata.MedicalInstitutionTypes
 import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
