@@ -4,6 +4,8 @@ import cz.vse.golemiokotlinlib.v2.client.GardensClient
 import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 /**
  * Test class for garden client.
@@ -19,18 +21,23 @@ class TestGardensClient : TestClient() {
 
     @Test
     fun testGetAllGardens() = runTest {
-        client.getAllGardens(
+        val testData = client.getAllGardens(
             latlng,
             limit = limit,
-            offset = offset,
-            range = range,
-            districts = listOf("praha-4"),
+            offset = 0,
+            range = 10000,
+            districts = listOf("praha-7"),
             updatedSince = updatedSince,
         )
+
+        assertTrue { testData.isNotEmpty() }
     }
 
     @Test
     fun getGardensByID() = runTest {
-        client.getGardenById("letenske-sady")
+        val testData = client.getGardenById("letenske-sady")
+
+        assertTrue { testData.properties?.name is String }
+        assertEquals(testData.properties?.name, "Letenské sady")
     }
 }
