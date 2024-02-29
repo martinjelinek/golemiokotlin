@@ -4,6 +4,8 @@ import cz.vse.golemiokotlinlib.v2.client.CityDistrictsClient
 import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 /**
  * Test class for city districts client.
@@ -19,17 +21,23 @@ class TestCityDistrictsClient : TestClient() {
 
     @Test
     fun testGetAllCityDistricts() = runTest {
-        client.getAllCityDistricts(
+        val testData = client.getAllCityDistricts(
             latlng = latlng,
             limit = limit,
             offset = offset,
             range = range,
-            updatedSince = updatedSince,
+            updatedSince = null,
         )
+
+        assertTrue { testData.isNotEmpty() }
     }
 
     @Test
     fun getCityDistrictByID() = runTest {
-        client.getCityDistrictById("praha-1")
+        val testData = client.getCityDistrictById("praha-1")
+
+        assertTrue { testData.properties?.name is String }
+        assertEquals(testData.properties?.name, "Praha 1")
+
     }
 }
