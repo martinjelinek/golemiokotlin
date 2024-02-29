@@ -1,9 +1,12 @@
 package cz.vse.jelinekma.pragueopendatakotlinlib
 
 import cz.vse.golemiokotlinlib.v2.client.MedicalInstitutionsClient
+import cz.vse.golemiokotlinlib.v2.entity.responsedata.MedicalGroup
 import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class TestMedicalInstitutionsClient : TestClient() {
 
@@ -16,12 +19,26 @@ class TestMedicalInstitutionsClient : TestClient() {
 
     @Test
     fun testGetAllMedicalInstitutions() = runTest {
+        val testData = client.getAllMedicalInstitutions(
+            latlng,
+            50000,
+            listOf("praha-4"),
+            MedicalGroup.PHARMACIES,
+            limit,
+            offset,
+            updatedSince
+        )
 
+        assertTrue { testData.isNotEmpty() }
     }
+
     @Test
     fun getMedicalInstitutionById() = runTest {
-        // todo zminit ze v golemiu nabizi blby id na testovani
-        // todo spatny ID vraci chybu - podchytit, mozna staci jen vratit null - content type je totiz null
-        val data = client.getMedicalInstitutionById("53279-dopravni-podnik-hl-m-prahy-as-prakticky-lekar-a-rehabilitace")
+        val testData = client.getMedicalInstitutionById("53279-dopravni-podnik-hl-m-prahy-as-prakticky-lekar-a-rehabilitace")
+
+        assertEquals(
+            testData.properties?.name,
+            "Dopravní podnik hl. m. Prahy a.s., Praktický lékař a rehabilitace"
+        )
     }
 }
