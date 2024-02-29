@@ -51,7 +51,7 @@ internal class MunicipalLibrariesCachingRepository(
     companion object Factory {
 
         /**
-         * Creates [MunicipalLibrariesCachingRepository] over [MunicipalLibrariesCachingRepository] with [GolemioApi] handling the api calls.
+         * Creates [MunicipalLibrariesCachingRepository] over [MunicipalLibrariesRemoteRepository] with [GolemioApi] handling the api calls.
          */
         fun create(apiKey: String) =
             MunicipalLibrariesCachingRepository(

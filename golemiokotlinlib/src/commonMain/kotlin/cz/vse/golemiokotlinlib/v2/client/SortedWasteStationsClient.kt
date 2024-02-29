@@ -37,32 +37,32 @@ class SortedWasteStationsClient(apiKey: String) {
     )
 
     /**
-     * TODO doc
+     * TODO 29/2/24 this method returns 403: Forbidden even on golemio try it out page.
      */
-    suspend fun getSortedWasteStationsMeasurements(
-        containerId: String,
-        ksnkoId: String?,
-        limit: Int?,
-        offset: Int?,
-        from: String?,
-        to: String?
-    ) = repository.getSortedWasteStationsMeasurements(
-        containerId, ksnkoId, limit, offset, from, to,
-    )
+//    suspend fun getSortedWasteStationsMeasurements(
+//        containerId: String,
+//        ksnkoId: String?,
+//        limit: Int?,
+//        offset: Int?,
+//        from: String?,
+//        to: String?
+//    ) = repository.getSortedWasteStationsMeasurements(
+//        containerId, ksnkoId, limit, offset, from, to,
+//    )
 
     /**
-     * TODO doc
+     * TODO 29/2/24 this method returns 403: Forbidden even on golemio try it out page.
      */
-    suspend fun getSortedWasteStationsPicks(
-        containerId: String,
-        ksnkoId: String?,
-        limit: Int?,
-        offset: Int?,
-        from: String?,
-        to: String?
-    ) = repository.getSortedWasteStationsPicks(
-        containerId, ksnkoId, limit, offset, from, to,
-    )
+//    suspend fun getSortedWasteStationsPicks(
+//        containerId: String,
+//        ksnkoId: String?,
+//        limit: Int?,
+//        offset: Int?,
+//        from: String?,
+//        to: String?
+//    ) = repository.getSortedWasteStationsPicks(
+//        containerId, ksnkoId, limit, offset, from, to,
+//    )
 
     /**
      * TODO doc

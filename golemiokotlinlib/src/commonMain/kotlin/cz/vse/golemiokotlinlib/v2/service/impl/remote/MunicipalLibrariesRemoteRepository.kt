@@ -3,7 +3,7 @@ package cz.vse.golemiokotlinlib.v2.service.impl.remote
 import cz.vse.golemiokotlinlib.v2.network.IGolemioApi
 import cz.vse.golemiokotlinlib.v2.service.IMunicipalLibrariesRepository
 
-class MunicipalLibrariesRemoteRepository(private val api: IGolemioApi) : IMunicipalLibrariesRepository {
+internal class MunicipalLibrariesRemoteRepository(private val api: IGolemioApi) : IMunicipalLibrariesRepository {
     override suspend fun getAllMunicipalLibraries(
         latlng: Pair<String, String>?,
         range: Int?,
