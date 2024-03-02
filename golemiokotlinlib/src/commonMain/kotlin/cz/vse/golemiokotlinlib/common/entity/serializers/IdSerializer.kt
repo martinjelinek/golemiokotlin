@@ -31,9 +31,8 @@ data class IntId(
 /**
  * Serializer for [IdObject].
  *
- * Needed because some of the responses object (such as [ParkingV1Properties])
+ * Needed because some of the responses object (such as [ParkingProperties])
  * have the id in schema type set as "oneOf string/int".
- * TODO do reportu
  */
 object IdObjectSerializer : KSerializer<IdObject> {
     override val descriptor: SerialDescriptor =
@@ -52,7 +51,7 @@ object IdObjectSerializer : KSerializer<IdObject> {
         return when (val json = decoder.decodeSerializableValue(JsonElement.serializer())) {
             is JsonPrimitive -> {
                 if (json.isString) {
-                    StringId(json.jsonPrimitive.toString())
+                    StringId(json.jsonPrimitive.content)
                 } else {
                     IntId(json.jsonPrimitive.int)
                 }

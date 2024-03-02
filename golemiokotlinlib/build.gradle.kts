@@ -31,15 +31,14 @@ kotlin {
             dependencies {
                 implementation(libs.ktor.client.core)
                 implementation(libs.ktor.client.contentnegotiation)
-                implementation(libs.ktor.client.logging)
                 implementation(libs.ktor.client.json)
-                implementation(libs.ktor.client.cio)
-                implementation(libs.ktor.server.statuspages)
                 implementation(libs.common.serialization.json)
+                implementation(libs.ktor.client.cio)
             }
         }
         val commonTest by getting {
             dependencies {
+                implementation(libs.common.serialization.json)
                 implementation(kotlin("test"))
             }
         }
