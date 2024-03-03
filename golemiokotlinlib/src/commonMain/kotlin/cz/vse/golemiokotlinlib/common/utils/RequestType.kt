@@ -1,4 +1,4 @@
-package cz.vse.golemiokotlinlib.common.urlutils
+package cz.vse.golemiokotlinlib.common.utils
 
 /**
  * Used for building the request URL.
@@ -6,10 +6,6 @@ package cz.vse.golemiokotlinlib.common.urlutils
 internal enum class RequestType(val path: String) {
     AIR_QUALITY_STATIONS("airqualitystations"),
     BICYCLE_COUNTERS("bicyclecounters"),
-    // todo adjust the original one
-    BICYCLE_COUNTERS_DETECTIONS("bicyclecounters/detections"),
-    // todo adjust the original one
-    BICYCLE_COUNTERS_TEMPERATURES("bicyclecounters/temperatures"),
     CITY_DISTRICTS("citydistricts"),
     GARDENS("gardens"),
     MEDICAL_INSTITUTIONS("medicalinstitutions"),
@@ -17,7 +13,6 @@ internal enum class RequestType(val path: String) {
     MUNICIPAL_LIBRARIES("municipallibraries"),
     MUNICIPAL_POLICE_STATIONS("municipalpolicestations"),
     PARKING_V1("parkings"),
-    PARKING_V2("parking"),
     PLAYGROUNDS("playgrounds"),
     WASTE_COLLECTION("sortedwastestations"),
     WASTE_YARDS("wastecollectionyards")

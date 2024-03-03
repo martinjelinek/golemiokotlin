@@ -1,5 +1,7 @@
 package cz.vse.golemiokotlinlib.common.entity.featurescollection
 
+import cz.vse.golemiokotlinlib.common.entity.serializers.AQHourlyIndexSerializer
+import cz.vse.golemiokotlinlib.common.entity.serializers.AQObject
 import cz.vse.golemiokotlinlib.common.entity.serializers.IdObject
 import cz.vse.golemiokotlinlib.common.entity.serializers.IdObjectSerializer
 import cz.vse.golemiokotlinlib.common.entity.serializers.Image
@@ -20,28 +22,91 @@ data class AirQualityStationsProperties(
     val measurement: Measurement? = null,
     @SerialName("updated_at")
     val updatedAt: String? = null
-) : Properties()
+) : Properties() {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is AirQualityStationsProperties) return false
+
+        if (id != other.id) return false
+        if (name != other.name) return false
+        if (district != other.district) return false
+        if (measurement != other.measurement) return false
+        return updatedAt == other.updatedAt
+    }
+
+    override fun hashCode(): Int {
+        var result = id.hashCode()
+        result = 31 * result + name.hashCode()
+        result = 31 * result + (district?.hashCode() ?: 0)
+        result = 31 * result + (measurement?.hashCode() ?: 0)
+        result = 31 * result + (updatedAt?.hashCode() ?: 0)
+        return result
+    }
+}
 
 @Serializable
 data class Measurement(
     @SerialName("AQ_hourly_index")
-    val aqHourlyIndex: String? = null,
+    @Serializable(with = AQHourlyIndexSerializer::class)
+    val aqHourlyIndex: AQObject? = null,
     val components: List<Component>? = null
-)
+) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is Measurement) return false
+
+        if (aqHourlyIndex != other.aqHourlyIndex) return false
+        return components == other.components
+    }
+
+    override fun hashCode(): Int {
+        var result = aqHourlyIndex?.hashCode() ?: 0
+        result = 31 * result + (components?.hashCode() ?: 0)
+        return result
+    }
+}
 
 @Serializable
 data class Component(
     @SerialName("averaged_time")
     val averagedTime: AveragedTime? = null,
     val type: String? = null
-)
+) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is Component) return false
+
+        if (averagedTime != other.averagedTime) return false
+        return type == other.type
+    }
+
+    override fun hashCode(): Int {
+        var result = averagedTime?.hashCode() ?: 0
+        result = 31 * result + (type?.hashCode() ?: 0)
+        return result
+    }
+}
 
 @Serializable
 data class AveragedTime(
     @SerialName("averaged_hours")
     val averagedHours: Int? = null,
     val value: Double? = null
-)
+) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is AveragedTime) return false
+
+        if (averagedHours != other.averagedHours) return false
+        return value == other.value
+    }
+
+    override fun hashCode(): Int {
+        var result = averagedHours ?: 0
+        result = 31 * result + (value?.hashCode() ?: 0)
+        return result
+    }
+}
 
 @Serializable
 data class GardenProperties(

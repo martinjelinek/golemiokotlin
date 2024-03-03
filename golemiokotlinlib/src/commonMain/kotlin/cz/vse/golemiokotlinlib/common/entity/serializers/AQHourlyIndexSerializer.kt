@@ -14,19 +14,29 @@ import kotlinx.serialization.json.int
 import kotlinx.serialization.json.jsonPrimitive
 
 @Serializable
-sealed class IdObject {
+sealed class AQObject {
     abstract val value: Any?
 }
 
 @Serializable
-data class StringId(
+data class StringAQ(
     override val value: String
-) : IdObject()
+) : AQObject() {
+    override fun equals(other: Any?): Boolean {
+        return other is String && value == other
+    }
+
+    override fun hashCode(): Int {
+        return value.hashCode()
+    }
+}
 
 @Serializable
-data class IntId(
+data class IntAQ(
     override val value: Int
-) : IdObject()
+) : AQObject() {
+
+}
 
 /**
  * Serializer for [IdObject].
@@ -34,26 +44,26 @@ data class IntId(
  * Needed because some of the responses object (such as [ParkingProperties])
  * have the id in schema type set as "oneOf string/int".
  */
-object IdObjectSerializer : KSerializer<IdObject> {
+object AQHourlyIndexSerializer : KSerializer<AQObject> {
     override val descriptor: SerialDescriptor =
         buildClassSerialDescriptor("IdObject") {
             element("id", String.serializer().descriptor)
         }
 
-    override fun serialize(encoder: Encoder, value: IdObject) {
+    override fun serialize(encoder: Encoder, value: AQObject) {
         when (value) {
-            is StringId -> encoder.encodeString(value.value)
-            is IntId -> encoder.encodeInt(value.value)
+            is StringAQ -> encoder.encodeString(value.value)
+            is IntAQ -> encoder.encodeInt(value.value)
         }
     }
 
-    override fun deserialize(decoder: Decoder): IdObject {
+    override fun deserialize(decoder: Decoder): AQObject {
         return when (val json = decoder.decodeSerializableValue(JsonElement.serializer())) {
             is JsonPrimitive -> {
                 if (json.isString) {
-                    StringId(json.jsonPrimitive.content)
+                    StringAQ(json.jsonPrimitive.content)
                 } else {
-                    IntId(json.jsonPrimitive.int)
+                    IntAQ(json.jsonPrimitive.int)
                 }
             }
             else -> throw SerializationException("Invalid id JSON structure")

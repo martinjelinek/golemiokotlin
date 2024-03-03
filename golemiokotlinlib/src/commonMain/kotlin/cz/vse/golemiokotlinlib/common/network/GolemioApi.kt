@@ -1,7 +1,7 @@
 package cz.vse.golemiokotlinlib.common.network
 
-import cz.vse.golemiokotlinlib.common.urlutils.RequestParamsBuilder
-import cz.vse.golemiokotlinlib.common.urlutils.RequestType
+import cz.vse.golemiokotlinlib.common.utils.RequestParamsUtils
+import cz.vse.golemiokotlinlib.common.utils.RequestType
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.AirQualityStation
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.BicycleCounter
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.CityDistrict
@@ -31,7 +31,6 @@ import cz.vse.golemiokotlinlib.common.entity.responsedata.WasteStationsPickDays
 import cz.vse.golemiokotlinlib.common.entity.responsedata.WasteStationsPicks
 import cz.vse.golemiokotlinlib.common.service.impl.HttpClientFactory
 import io.ktor.client.call.body
-import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.request.parameter
@@ -44,7 +43,7 @@ import io.ktor.http.appendPathSegments
 
 internal class GolemioApi(private val apiKey: String) : IGolemioApi {
 
-    private val httpClient = HttpClientFactory.createHttpClient(LogLevel.BODY)
+    private val httpClient = HttpClientFactory.createHttpClient()
     private val productQueryUrl = with(URLBuilder(API_URL)) {
         build()
     }
@@ -59,12 +58,12 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
         updatedSince: String?,
     ): List<AirQualityStation> = getFeatureCollection<AirQualityStation>(
         RequestType.AIR_QUALITY_STATIONS,
-        RequestParamsBuilder.getLatLng(latlng),
-        RequestParamsBuilder.getRange(range),
-        RequestParamsBuilder.getDistricts(districts),
-        RequestParamsBuilder.getLimit(limit),
-        RequestParamsBuilder.getOffset(offset),
-        RequestParamsBuilder.getUpdatedSince(updatedSince),
+        RequestParamsUtils.getLatLng(latlng),
+        RequestParamsUtils.getRange(range),
+        RequestParamsUtils.getDistricts(districts),
+        RequestParamsUtils.getLimit(limit),
+        RequestParamsUtils.getOffset(offset),
+        RequestParamsUtils.getUpdatedSince(updatedSince),
     )
 
     override suspend fun getAirQualityStationsHistory(
@@ -77,11 +76,11 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
         return getListResponseData<AirQualityStationHistory>(
             RequestType.AIR_QUALITY_STATIONS,
             "history",
-            RequestParamsBuilder.getLimit(limit),
-            RequestParamsBuilder.getOffset(offset),
-            RequestParamsBuilder.getFrom(from),
-            RequestParamsBuilder.getTo(to),
-            RequestParamsBuilder.getSensorId(sensorId),
+            RequestParamsUtils.getLimit(limit),
+            RequestParamsUtils.getOffset(offset),
+            RequestParamsUtils.getFrom(from),
+            RequestParamsUtils.getTo(to),
+            RequestParamsUtils.getSensorId(sensorId),
         )
     }
 
@@ -94,10 +93,10 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
         offset: Int?
     ): List<BicycleCounter> = getFeatureCollection<BicycleCounter>(
         RequestType.BICYCLE_COUNTERS,
-        RequestParamsBuilder.getLatLng(latlng),
-        RequestParamsBuilder.getRange(range),
-        RequestParamsBuilder.getLimit(limit),
-        RequestParamsBuilder.getOffset(offset),
+        RequestParamsUtils.getLatLng(latlng),
+        RequestParamsUtils.getRange(range),
+        RequestParamsUtils.getLimit(limit),
+        RequestParamsUtils.getOffset(offset),
     )
 
     override suspend fun getBicycleCountersDetections(
@@ -110,12 +109,12 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
     ): List<BicycleCounterDetection> = getListResponseData(
         RequestType.BICYCLE_COUNTERS,
         "detections",
-        RequestParamsBuilder.getLimit(limit),
-        RequestParamsBuilder.getOffset(offset),
-        RequestParamsBuilder.getFrom(from),
-        RequestParamsBuilder.getTo(to),
-        RequestParamsBuilder.getAggregate(aggregate),
-        RequestParamsBuilder.getSimpleId(id),
+        RequestParamsUtils.getLimit(limit),
+        RequestParamsUtils.getOffset(offset),
+        RequestParamsUtils.getFrom(from),
+        RequestParamsUtils.getTo(to),
+        RequestParamsUtils.getAggregate(aggregate),
+        RequestParamsUtils.getSimpleId(id),
     )
 
     override suspend fun getBicycleCountersTemperatures(
@@ -128,12 +127,12 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
     ): List<BicycleCounterTemperature> = getListResponseData(
         RequestType.BICYCLE_COUNTERS,
         "temperatures",
-        RequestParamsBuilder.getLimit(limit),
-        RequestParamsBuilder.getOffset(offset),
-        RequestParamsBuilder.getFrom(from),
-        RequestParamsBuilder.getTo(to),
-        RequestParamsBuilder.getAggregate(aggregate),
-        RequestParamsBuilder.getIds(ids),
+        RequestParamsUtils.getLimit(limit),
+        RequestParamsUtils.getOffset(offset),
+        RequestParamsUtils.getFrom(from),
+        RequestParamsUtils.getTo(to),
+        RequestParamsUtils.getAggregate(aggregate),
+        RequestParamsUtils.getIds(ids),
     )
 
     // endregion
@@ -146,11 +145,11 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
         updatedSince: String?
     ): List<CityDistrict> = getFeatureCollection(
         RequestType.CITY_DISTRICTS,
-        RequestParamsBuilder.getLatLng(latlng),
-        RequestParamsBuilder.getRange(range),
-        RequestParamsBuilder.getLimit(limit),
-        RequestParamsBuilder.getOffset(offset),
-        RequestParamsBuilder.getUpdatedSince(updatedSince),
+        RequestParamsUtils.getLatLng(latlng),
+        RequestParamsUtils.getRange(range),
+        RequestParamsUtils.getLimit(limit),
+        RequestParamsUtils.getOffset(offset),
+        RequestParamsUtils.getUpdatedSince(updatedSince),
     )
 
     override suspend fun getCityDistrictById(
@@ -168,12 +167,12 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
         updatedSince: String?
     ): List<Garden> = getFeatureCollection(
         RequestType.GARDENS,
-        RequestParamsBuilder.getLatLng(latlng),
-        RequestParamsBuilder.getRange(range),
-        RequestParamsBuilder.getDistricts(districts),
-        RequestParamsBuilder.getLimit(limit),
-        RequestParamsBuilder.getOffset(offset),
-        RequestParamsBuilder.getUpdatedSince(updatedSince),
+        RequestParamsUtils.getLatLng(latlng),
+        RequestParamsUtils.getRange(range),
+        RequestParamsUtils.getDistricts(districts),
+        RequestParamsUtils.getLimit(limit),
+        RequestParamsUtils.getOffset(offset),
+        RequestParamsUtils.getUpdatedSince(updatedSince),
     )
 
     override suspend fun getGardenById(id: String): Garden =
@@ -191,13 +190,13 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
         updatedSince: String?
     ): List<MedicalInstitution> = getFeatureCollection(
         RequestType.MEDICAL_INSTITUTIONS,
-        RequestParamsBuilder.getLatLng(latlng),
-        RequestParamsBuilder.getRange(range),
-        RequestParamsBuilder.getDistricts(districts),
-        RequestParamsBuilder.getMedicalGroup(group),
-        RequestParamsBuilder.getLimit(limit),
-        RequestParamsBuilder.getOffset(offset),
-        RequestParamsBuilder.getUpdatedSince(updatedSince)
+        RequestParamsUtils.getLatLng(latlng),
+        RequestParamsUtils.getRange(range),
+        RequestParamsUtils.getDistricts(districts),
+        RequestParamsUtils.getMedicalGroup(group),
+        RequestParamsUtils.getLimit(limit),
+        RequestParamsUtils.getOffset(offset),
+        RequestParamsUtils.getUpdatedSince(updatedSince)
     )
 
     override suspend fun getMedicalInstitutionById(
@@ -224,13 +223,13 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
         updatedSince: String?
     ): List<MunicipalAuthority> = getFeatureCollection<MunicipalAuthority>(
         RequestType.MUNICIPAL_AUTHORITIES,
-        RequestParamsBuilder.getLatLng(latlng),
-        RequestParamsBuilder.getRange(range),
-        RequestParamsBuilder.getDistricts(districts),
-        RequestParamsBuilder.getMunicipalAuthorityType(type),
-        RequestParamsBuilder.getLimit(limit),
-        RequestParamsBuilder.getOffset(offset),
-        RequestParamsBuilder.getUpdatedSince(updatedSince)
+        RequestParamsUtils.getLatLng(latlng),
+        RequestParamsUtils.getRange(range),
+        RequestParamsUtils.getDistricts(districts),
+        RequestParamsUtils.getMunicipalAuthorityType(type),
+        RequestParamsUtils.getLimit(limit),
+        RequestParamsUtils.getOffset(offset),
+        RequestParamsUtils.getUpdatedSince(updatedSince)
     )
 
     override suspend fun getMunicipalAuthorityById(
@@ -259,12 +258,12 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
         updatedSince: String?
     ): List<MunicipalLibrary> = getFeatureCollection<MunicipalLibrary>(
         RequestType.MUNICIPAL_LIBRARIES,
-        RequestParamsBuilder.getLatLng(latlng),
-        RequestParamsBuilder.getRange(range),
-        RequestParamsBuilder.getDistricts(districts),
-        RequestParamsBuilder.getLimit(limit),
-        RequestParamsBuilder.getOffset(offset),
-        RequestParamsBuilder.getUpdatedSince(updatedSince),
+        RequestParamsUtils.getLatLng(latlng),
+        RequestParamsUtils.getRange(range),
+        RequestParamsUtils.getDistricts(districts),
+        RequestParamsUtils.getLimit(limit),
+        RequestParamsUtils.getOffset(offset),
+        RequestParamsUtils.getUpdatedSince(updatedSince),
     )
 
     override suspend fun getMunicipalLibraryById(
@@ -285,12 +284,12 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
         updatedSince: String?
     ): List<MunicipalPoliceStation> = getFeatureCollection<MunicipalPoliceStation>(
         RequestType.MUNICIPAL_POLICE_STATIONS,
-        RequestParamsBuilder.getLatLng(latlng),
-        RequestParamsBuilder.getRange(range),
-        RequestParamsBuilder.getDistricts(districts),
-        RequestParamsBuilder.getLimit(limit),
-        RequestParamsBuilder.getOffset(offset),
-        RequestParamsBuilder.getUpdatedSince(updatedSince),
+        RequestParamsUtils.getLatLng(latlng),
+        RequestParamsUtils.getRange(range),
+        RequestParamsUtils.getDistricts(districts),
+        RequestParamsUtils.getLimit(limit),
+        RequestParamsUtils.getOffset(offset),
+        RequestParamsUtils.getUpdatedSince(updatedSince),
     )
 
     override suspend fun getMunicipalPoliceStationById(
@@ -311,12 +310,12 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
         updatedSince: String?
     ): List<ParkingV1> = getFeatureCollection<ParkingV1>(
         RequestType.PARKING_V1,
-        RequestParamsBuilder.getLatLng(latlng),
-        RequestParamsBuilder.getRange(range),
-        RequestParamsBuilder.getDistricts(districts),
-        RequestParamsBuilder.getLimit(limit),
-        RequestParamsBuilder.getOffset(offset),
-        RequestParamsBuilder.getUpdatedSince(updatedSince),
+        RequestParamsUtils.getLatLng(latlng),
+        RequestParamsUtils.getRange(range),
+        RequestParamsUtils.getDistricts(districts),
+        RequestParamsUtils.getLimit(limit),
+        RequestParamsUtils.getOffset(offset),
+        RequestParamsUtils.getUpdatedSince(updatedSince),
     )
 
     override suspend fun getParkingsV1ById(id: String): ParkingV1 = getFeatureById(
@@ -333,11 +332,11 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
     ): List<ParkingsV1History> = getListResponseData<ParkingsV1History>(
         RequestType.PARKING_V1,
         "history",
-        RequestParamsBuilder.getLimit(limit),
-        RequestParamsBuilder.getOffset(offset),
-        RequestParamsBuilder.getFrom(from),
-        RequestParamsBuilder.getTo(to),
-        RequestParamsBuilder.getSensorId(sensorId),
+        RequestParamsUtils.getLimit(limit),
+        RequestParamsUtils.getOffset(offset),
+        RequestParamsUtils.getFrom(from),
+        RequestParamsUtils.getTo(to),
+        RequestParamsUtils.getSensorId(sensorId),
     )
     // endregion
     // region playgrounds
@@ -350,12 +349,12 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
         updatedSince: String?
     ): List<Playground> = getFeatureCollection<Playground>(
         RequestType.PLAYGROUNDS,
-        RequestParamsBuilder.getLatLng(latlng),
-        RequestParamsBuilder.getRange(range),
-        RequestParamsBuilder.getDistricts(districts),
-        RequestParamsBuilder.getLimit(limit),
-        RequestParamsBuilder.getOffset(offset),
-        RequestParamsBuilder.getUpdatedSince(updatedSince),
+        RequestParamsUtils.getLatLng(latlng),
+        RequestParamsUtils.getRange(range),
+        RequestParamsUtils.getDistricts(districts),
+        RequestParamsUtils.getLimit(limit),
+        RequestParamsUtils.getOffset(offset),
+        RequestParamsUtils.getUpdatedSince(updatedSince),
     )
 
     override suspend fun getPlaygroundById(id: String): Playground =
@@ -381,14 +380,14 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
         ksnkoId: String,
     ): List<WasteCollection> = getFeatureCollection<WasteCollection>(
         RequestType.WASTE_COLLECTION,
-        RequestParamsBuilder.getLatLng(latlng),
-        RequestParamsBuilder.getRange(range),
-        RequestParamsBuilder.getDistricts(districts),
-        RequestParamsBuilder.getWasteStationsAccessibility(accessibility),
-        RequestParamsBuilder.getLimit(limit),
-        RequestParamsBuilder.getOffset(offset),
-        RequestParamsBuilder.getSimpleId(id),
-        RequestParamsBuilder.getKsnkoId(ksnkoId),
+        RequestParamsUtils.getLatLng(latlng),
+        RequestParamsUtils.getRange(range),
+        RequestParamsUtils.getDistricts(districts),
+        RequestParamsUtils.getWasteStationsAccessibility(accessibility),
+        RequestParamsUtils.getLimit(limit),
+        RequestParamsUtils.getOffset(offset),
+        RequestParamsUtils.getSimpleId(id),
+        RequestParamsUtils.getKsnkoId(ksnkoId),
 
         )
 
@@ -402,12 +401,12 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
     ): List<WasteStationMeasurements> = getListResponseData<WasteStationMeasurements>(
         RequestType.WASTE_COLLECTION,
         "measurements",
-        RequestParamsBuilder.getContainerId(containerId),
-        RequestParamsBuilder.getKsnkoId(ksnkoId),
-        RequestParamsBuilder.getLimit(limit),
-        RequestParamsBuilder.getOffset(offset),
-        RequestParamsBuilder.getFrom(from),
-        RequestParamsBuilder.getTo(to),
+        RequestParamsUtils.getContainerId(containerId),
+        RequestParamsUtils.getKsnkoId(ksnkoId),
+        RequestParamsUtils.getLimit(limit),
+        RequestParamsUtils.getOffset(offset),
+        RequestParamsUtils.getFrom(from),
+        RequestParamsUtils.getTo(to),
     )
 
     override suspend fun getSortedWasteStationsPicks(
@@ -420,12 +419,12 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
     ): List<WasteStationsPicks> = getListResponseData(
         RequestType.WASTE_COLLECTION,
         "picks",
-        RequestParamsBuilder.getContainerId(containerId),
-        RequestParamsBuilder.getKsnkoId(ksnkoId),
-        RequestParamsBuilder.getLimit(limit),
-        RequestParamsBuilder.getOffset(offset),
-        RequestParamsBuilder.getFrom(from),
-        RequestParamsBuilder.getTo(to),
+        RequestParamsUtils.getContainerId(containerId),
+        RequestParamsUtils.getKsnkoId(ksnkoId),
+        RequestParamsUtils.getLimit(limit),
+        RequestParamsUtils.getOffset(offset),
+        RequestParamsUtils.getFrom(from),
+        RequestParamsUtils.getTo(to),
     )
 
     override suspend fun getSortedWasteStationsPickDays(
@@ -434,8 +433,8 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
     ): List<WasteStationsPickDays> = getListResponseData<WasteStationsPickDays>(
         RequestType.WASTE_COLLECTION,
         "pickdays",
-        RequestParamsBuilder.getSensoneoCode(sensoneoCode),
-        RequestParamsBuilder.getKsnkoId(ksnkoId),
+        RequestParamsUtils.getSensoneoCode(sensoneoCode),
+        RequestParamsUtils.getKsnkoId(ksnkoId),
     )
 
     // endregion

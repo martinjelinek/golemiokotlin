@@ -49,8 +49,6 @@ data class QuadrupleCoordinates(
  * Type "Point" -> [SingleCoordinates]
  * Type "Polygon" -> [TripleCoordinates]
  * Type "MultiPolygon" -> [QuadrupleCoordinates]
- *
- * TODO do reportu
  */
 object CoordinatesSerializer : KSerializer<Coordinates> {
     override val descriptor: SerialDescriptor = SingleCoordinates.serializer().descriptor

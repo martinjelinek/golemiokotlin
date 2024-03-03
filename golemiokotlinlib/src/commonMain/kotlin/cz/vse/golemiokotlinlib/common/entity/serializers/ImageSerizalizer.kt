@@ -15,7 +15,23 @@ open class Image(
     val url: String? = null,
     val mimetype: String? = null,
     val size: Int? = null,
-)
+) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is Image) return false
+
+        if (url != other.url) return false
+        if (mimetype != other.mimetype) return false
+        return size == other.size
+    }
+
+    override fun hashCode(): Int {
+        var result = url?.hashCode() ?: 0
+        result = 31 * result + (mimetype?.hashCode() ?: 0)
+        result = 31 * result + (size ?: 0)
+        return result
+    }
+}
 
 object ImageSerializer : KSerializer<Image> {
     override val descriptor: SerialDescriptor =
@@ -35,7 +51,7 @@ object ImageSerializer : KSerializer<Image> {
 
     override fun deserialize(decoder: Decoder): Image {
         val composite = decoder.beginStructure(descriptor)
-        lateinit var url: String
+        var url: String? = null
         var mimetype: String? = null
         var size: Int? = null
 

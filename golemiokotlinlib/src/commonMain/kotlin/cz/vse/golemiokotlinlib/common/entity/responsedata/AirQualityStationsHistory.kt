@@ -11,6 +11,8 @@ data class AirQualityStationHistory(
     @SerialName("id")
     val id: String,
     @SerialName("measurement")
-    val measurement: Measurement? = null
+    val measurement: Measurement? = null,
+    @SerialName("updated_at")
+    val updatedAt: String? = null
 ) : ResponseData
 
