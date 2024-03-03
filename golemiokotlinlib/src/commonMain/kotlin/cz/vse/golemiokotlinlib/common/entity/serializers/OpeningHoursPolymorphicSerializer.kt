@@ -13,10 +13,10 @@ import kotlinx.serialization.encoding.Encoder
 
 @Serializable
 open class OpeningHour(
-    val closes: String? = null,
     @SerialName("day_of_week")
     val dayOfWeek: String? = null,
     val opens: String? = null,
+    val closes: String? = null,
     val description: String? = null
 )
 
@@ -88,6 +88,11 @@ object OpeningHoursPolymorphicSerializer : KSerializer<OpeningHourPolymorphic> {
         }
 
         composite.endStructure(descriptor)
-        return OpeningHourPolymorphic(dayOfWeek, opens, closes, description)
+        return OpeningHourPolymorphic(
+            dayOfWeek = dayOfWeek,
+            opens = opens,
+            closes = closes,
+            description = description
+        )
     }
 }
