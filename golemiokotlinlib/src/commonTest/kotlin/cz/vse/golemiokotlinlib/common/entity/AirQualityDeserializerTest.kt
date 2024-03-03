@@ -6,6 +6,7 @@ import cz.vse.golemiokotlinlib.common.entity.featurescollection.AveragedTime
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.Component
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.FeatureCollection
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.Measurement
+import cz.vse.golemiokotlinlib.common.entity.responsedata.AirQualityStationHistory
 import cz.vse.golemiokotlinlib.common.entity.serializers.IntAQ
 import kotlinx.serialization.json.Json
 import kotlin.test.Test
@@ -108,7 +109,6 @@ class AirQualityDeserializerTest {
             }
         """
 
-        // Deserialize the JSON string to FeatureCollection
         val actual: FeatureCollection<AirQualityStation> =
             json.decodeFromString<FeatureCollection<AirQualityStation>>(jsonString)
 
@@ -138,5 +138,50 @@ class AirQualityDeserializerTest {
             )
         )
         assertEquals(actual, expected)
+    }
+
+
+
+    @Test
+    fun testAirQualityStationHistoryDeserialization() {
+        // JSON string representing the array of AirQualityStationHistory objects
+        val jsonString = """
+            [
+              {
+                "id": "ACHOA",
+                "measurement": {
+                  "AQ_hourly_index": 3,
+                  "components": [
+                    {
+                      "averaged_time": {
+                        "averaged_hours": 1,
+                        "value": 10.7
+                      },
+                      "type": "NO2"
+                    }
+                  ]
+                },
+                "updated_at": "2019-05-18T07:38:37.000Z"
+              }
+            ]
+        """
+
+        // Deserialize the JSON string into a list of AirQualityStationHistory objects
+        val airQualityStationHistories = Json.decodeFromString<List<AirQualityStationHistory>>(jsonString)
+
+        // Ensure that the deserialized list is not null and contains one element
+        assertEquals(1, airQualityStationHistories.size)
+
+        // Verify the properties of the first AirQualityStationHistory object
+        val firstHistory = airQualityStationHistories[0]
+        assertEquals("ACHOA", firstHistory.id)
+        assertEquals(3, firstHistory.measurement?.aqHourlyIndex?.value)
+
+        // Verify the properties of the measurement component
+        val measurement = firstHistory.measurement
+        assertEquals(1, measurement?.components?.size)
+        assertEquals(1, measurement?.components?.get(0)?.averagedTime?.averagedHours)
+        assertEquals(10.7, measurement?.components?.get(0)?.averagedTime?.value)
+        assertEquals("NO2", measurement?.components?.get(0)?.type)
     }
 }
