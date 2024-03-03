@@ -7,6 +7,9 @@ import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertTrue
 
+/**
+ * Test class for verifying [BicycleCountersClient] functionality.
+ */
 class TestBicycleCountersClient : TestClient() {
 
     private lateinit var client: BicycleCountersClient
@@ -36,7 +39,7 @@ class TestBicycleCountersClient : TestClient() {
             from = from,
             to = to,
             aggregate = false,
-            id = "camea-BC_ZA-BO"
+            id = "camea-BC_ZA-BO",
         )
 
         assertTrue { testData.isNotEmpty() }
