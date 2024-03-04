@@ -6,6 +6,10 @@ import kotlinx.serialization.json.Json
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
+/**
+ * Test class for verifying the example data from golemio
+ * are being deserialized properly.
+ */
 class CityDistrictsDeserializationTest {
 
     @Test
