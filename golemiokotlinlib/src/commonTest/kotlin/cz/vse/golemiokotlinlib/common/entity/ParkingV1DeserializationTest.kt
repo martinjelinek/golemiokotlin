@@ -381,4 +381,3 @@ class ParkingV1DeserializationTest {
         assertEquals(1556868553000, entry.lastUpdated)
     }
 }
-
