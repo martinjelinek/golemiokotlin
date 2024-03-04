@@ -1,4 +1,4 @@
-package cz.vse.golemiokotlinlib.common.entity
+package cz.vse.golemiokotlinlib.common.entity.v2
 
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.AirQualityStation
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.AirQualityStationsProperties
@@ -21,7 +21,7 @@ class AirQualityDeserializerTest {
     private val json = Json
 
     @Test
-    fun `deserialize FeatureCollection from JSON`() {
+    fun `test air quality deserialization`() {
         val jsonString = """
             {
               "type": "FeatureCollection",
@@ -140,11 +140,8 @@ class AirQualityDeserializerTest {
         assertEquals(actual, expected)
     }
 
-
-
     @Test
-    fun testAirQualityStationHistoryDeserialization() {
-        // JSON string representing the array of AirQualityStationHistory objects
+    fun `test air quality station history deserialization`() {
         val jsonString = """
             [
               {

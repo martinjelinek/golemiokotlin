@@ -15,6 +15,8 @@ data class BicycleCounterDetection(
     val measuredTo: String,
     @SerialName("measurement_count")
     val measurementCount: Int,
+    @SerialName("locations_id")
+    val locationsId: String? = null
 ) : ResponseData
 
 @Serializable

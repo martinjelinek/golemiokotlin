@@ -17,7 +17,13 @@ open class OpeningHour(
     val dayOfWeek: String? = null,
     val opens: String? = null,
     val closes: String? = null,
-    val description: String? = null
+    val description: String? = null,
+    @SerialName("valid_from")
+    val validFrom: String? = null,
+    @SerialName("valid_through")
+    val validThrough: String? = null,
+    @SerialName("is_default")
+    val isDefault: Boolean? = null
 )
 
 /**
@@ -31,7 +37,13 @@ open class OpeningHourPolymorphic(
     val dayOfWeek: String? = null,
     val opens: String? = null,
     val closes: String? = null,
-    val description: String? = null
+    val description: String? = null,
+    @SerialName("valid_from")
+    val validFrom: String? = null,
+    @SerialName("valid_through")
+    val validThrough: String? = null,
+    @SerialName("is_default")
+    val isDefault: Boolean? = null
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -58,6 +70,10 @@ object OpeningHoursPolymorphicSerializer : KSerializer<OpeningHourPolymorphic> {
         element("opens", String.serializer().descriptor)
         element("closes", String.serializer().descriptor)
         element("description", String.serializer().descriptor)
+        element("valid_from", String.serializer().descriptor)
+        element("valid_through", String.serializer().descriptor)
+        element("is_default", Boolean.serializer().descriptor)
+
     }
 
     override fun serialize(encoder: Encoder, value: OpeningHourPolymorphic) {
@@ -66,6 +82,9 @@ object OpeningHoursPolymorphicSerializer : KSerializer<OpeningHourPolymorphic> {
         value.opens?.let { composite.encodeStringElement(descriptor, 1, it) }
         value.closes?.let { composite.encodeStringElement(descriptor, 2, it) }
         value.description?.let { composite.encodeStringElement(descriptor, 3, it) }
+        value.validFrom?.let { composite.encodeStringElement(descriptor, 4, it) }
+        value.validThrough?.let { composite.encodeStringElement(descriptor, 5, it) }
+        value.isDefault?.let { composite.encodeBooleanElement(descriptor, 6, it) }
         composite.endStructure(descriptor)
     }
 
@@ -75,6 +94,9 @@ object OpeningHoursPolymorphicSerializer : KSerializer<OpeningHourPolymorphic> {
         var opens: String? = null
         var closes: String? = null
         var description: String? = null
+        var validFrom: String? = null
+        var validThrough: String? = null
+        var isDefault: Boolean? = null
 
         loop@ while (true) {
             when (val index = composite.decodeElementIndex(descriptor)) {
@@ -83,6 +105,9 @@ object OpeningHoursPolymorphicSerializer : KSerializer<OpeningHourPolymorphic> {
                 1 -> opens = composite.decodeStringElement(descriptor, index)
                 2 -> closes = composite.decodeStringElement(descriptor, index)
                 3 -> description = composite.decodeStringElement(descriptor, index)
+                4 -> validFrom = composite.decodeStringElement(descriptor, index)
+                5 -> validThrough = composite.decodeStringElement(descriptor, index)
+                6 -> isDefault = composite.decodeBooleanElement(descriptor, index)
                 else -> throw SerializationException("Unknown index $index")
             }
         }
@@ -92,7 +117,10 @@ object OpeningHoursPolymorphicSerializer : KSerializer<OpeningHourPolymorphic> {
             dayOfWeek = dayOfWeek,
             opens = opens,
             closes = closes,
-            description = description
+            description = description,
+            validFrom = validFrom,
+            validThrough = validThrough,
+            isDefault = isDefault
         )
     }
 }

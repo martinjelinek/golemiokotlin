@@ -34,6 +34,11 @@ data class SingleCoordinates(
 ) : Coordinates()
 
 @Serializable
+data class DoubleCoordinates(
+    override val value: List<List<Double?>?>?
+) : Coordinates()
+
+@Serializable
 data class TripleCoordinates(
     override val value: List<List<List<Double>>?>
 ) : Coordinates()
@@ -46,7 +51,7 @@ data class QuadrupleCoordinates(
 /**
  * Needed because there are three types of [Coordinates].
  *
- * Type "Point" -> [SingleCoordinates]
+ * Type "Point" -> [SingleCoordinates], [DoubleCoordinates]
  * Type "Polygon" -> [TripleCoordinates]
  * Type "MultiPolygon" -> [QuadrupleCoordinates]
  */
@@ -55,9 +60,25 @@ object CoordinatesSerializer : KSerializer<Coordinates> {
 
     override fun serialize(encoder: Encoder, value: Coordinates) {
         when (value) {
-            is SingleCoordinates -> encoder.encodeSerializableValue(SingleCoordinates.serializer(), value)
-            is TripleCoordinates -> encoder.encodeSerializableValue(TripleCoordinates.serializer(), value)
-            is QuadrupleCoordinates -> encoder.encodeSerializableValue(QuadrupleCoordinates.serializer(), value)
+            is SingleCoordinates -> encoder.encodeSerializableValue(
+                SingleCoordinates.serializer(),
+                value
+            )
+
+            is DoubleCoordinates -> encoder.encodeSerializableValue(
+                DoubleCoordinates.serializer(),
+                value
+            )
+
+            is TripleCoordinates -> encoder.encodeSerializableValue(
+                TripleCoordinates.serializer(),
+                value
+            )
+
+            is QuadrupleCoordinates -> encoder.encodeSerializableValue(
+                QuadrupleCoordinates.serializer(),
+                value
+            )
         }
     }
 
@@ -69,17 +90,25 @@ object CoordinatesSerializer : KSerializer<Coordinates> {
                         val coordinates = json.map { it.jsonPrimitive.doubleOrNull }
                         SingleCoordinates(coordinates)
                     }
+
                     is JsonArray -> {
                         if (json.all { it is JsonArray }) {
                             when (getNumberOfLevels(json)) {
+                                2 -> {
+                                    val coordinates = parseDoubleCoordinates(json)
+                                    DoubleCoordinates(coordinates)
+                                }
+
                                 3 -> {
                                     val coordinates = parseTripleCoordinates(json)
                                     TripleCoordinates(coordinates)
                                 }
+
                                 4 -> {
                                     val coordinates = parseQuadrupleCoordinates(json)
                                     QuadrupleCoordinates(coordinates)
                                 }
+
                                 else -> throw SerializationException("Invalid coordinates JSON structure")
                             }
                         } else {
@@ -87,21 +116,34 @@ object CoordinatesSerializer : KSerializer<Coordinates> {
                             QuadrupleCoordinates(coordinates)
                         }
                     }
+
                     else -> throw SerializationException("Invalid coordinates JSON structure")
                 }
             }
+
             is JsonObject -> {
                 when (val type = json["type"]?.jsonPrimitive?.contentOrNull) {
                     "Point" -> {
                         val coordinates = listOf(json["coordinates"]?.jsonPrimitive?.double)
                         SingleCoordinates(coordinates)
                     }
+
                     "Polygon" -> decoder.decodeSerializableValue(TripleCoordinates.serializer())
                     "MultiPolygon" -> decoder.decodeSerializableValue(QuadrupleCoordinates.serializer())
                     else -> throw SerializationException("Invalid geometry type: $type")
                 }
             }
+
             else -> throw SerializationException("Invalid coordinates JSON structure")
+        }
+    }
+
+    private fun parseDoubleCoordinates(jsonArray: JsonArray): List<List<Double>> {
+        return jsonArray.map { subElement ->
+            val nestedArray = subElement.jsonArray
+            nestedArray.map {
+                it.jsonPrimitive.doubleOrNull ?: error("Invalid coordinates JSON structure")
+            }
         }
     }
 
@@ -110,7 +152,9 @@ object CoordinatesSerializer : KSerializer<Coordinates> {
             val subArray = element.jsonArray
             subArray.map { subElement ->
                 val nestedArray = subElement.jsonArray
-                nestedArray.map { it.jsonPrimitive.doubleOrNull ?: error("Invalid coordinates JSON structure") }
+                nestedArray.map {
+                    it.jsonPrimitive.doubleOrNull ?: error("Invalid coordinates JSON structure")
+                }
             }
         }
     }
@@ -121,7 +165,9 @@ object CoordinatesSerializer : KSerializer<Coordinates> {
             subArray.map { subElement ->
                 subElement.jsonArray.map { subSubElement ->
                     val nestedArray = subSubElement.jsonArray
-                    nestedArray.map { it.jsonPrimitive.doubleOrNull ?: error("Invalid coordinates JSON structure") }
+                    nestedArray.map {
+                        it.jsonPrimitive.doubleOrNull ?: error("Invalid coordinates JSON structure")
+                    }
                 }
             }
         }

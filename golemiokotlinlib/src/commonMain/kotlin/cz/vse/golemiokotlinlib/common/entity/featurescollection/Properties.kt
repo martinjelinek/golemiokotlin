@@ -196,7 +196,7 @@ data class MunicipalityAuthorityProperties(
     @SerialName("official_board")
     val officialBoard: String? = null,
     @SerialName("opening_hours")
-    val openingHour: List<OpeningHour>? = null,
+    val openingHours: List<OpeningHour>? = null,
     @SerialName("updated_at")
     val updatedAt: String? = null,
     val type: MunicipalityType? = null
@@ -242,8 +242,8 @@ data class MunicipalLibraryService(
 @Serializable
 data class MunicipalPoliceStationProperties(
     val id: String,
-    @SerialName("cadestral_area")
-    val cadestralArea: String? = null,
+    @SerialName("cadastral_area")
+    val cadastralArea: String? = null,
     val note: String,
     @SerialName("updated_at")
     val updatedAt: String? = null,
