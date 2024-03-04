@@ -1,4 +1,4 @@
-package cz.vse.golemiokotlinlib.common.entity
+package cz.vse.golemiokotlinlib.common.entity.v2
 
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.CityDistrict
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.FeatureCollection
@@ -10,7 +10,7 @@ import kotlin.test.assertEquals
  * Test class for verifying the example data from golemio
  * are being deserialized properly.
  */
-class CityDistrictsDeserializationTest {
+class CityDistrictsDeserializerTest {
 
     @Test
     fun `test deserialization of city districts JSON`() {

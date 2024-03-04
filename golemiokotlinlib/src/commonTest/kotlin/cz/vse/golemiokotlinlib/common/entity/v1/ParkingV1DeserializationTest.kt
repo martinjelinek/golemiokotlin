@@ -1,4 +1,4 @@
-package cz.vse.golemiokotlinlib.common.entity
+package cz.vse.golemiokotlinlib.common.entity.v1
 
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.FeatureCollection
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.ParkingV1
@@ -352,7 +352,6 @@ class ParkingV1DeserializationTest {
 
     @Test
     fun `test deserialization of parking history JSON array`() {
-        // Given
         val json = """
             [
               {
@@ -366,10 +365,8 @@ class ParkingV1DeserializationTest {
             ]
         """.trimIndent()
 
-        // When
         val parkingHistory: List<ParkingsV1History> = Json.decodeFromString(json)
 
-        // Then
         assertEquals(1, parkingHistory.size)
 
         val entry = parkingHistory[0]

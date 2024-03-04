@@ -196,7 +196,7 @@ data class MunicipalityAuthorityProperties(
     @SerialName("official_board")
     val officialBoard: String? = null,
     @SerialName("opening_hours")
-    val openingHour: List<OpeningHour>? = null,
+    val openingHours: List<OpeningHour>? = null,
     @SerialName("updated_at")
     val updatedAt: String? = null,
     val type: MunicipalityType? = null

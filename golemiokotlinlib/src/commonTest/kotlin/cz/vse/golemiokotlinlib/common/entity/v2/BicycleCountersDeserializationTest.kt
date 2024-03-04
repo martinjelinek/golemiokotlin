@@ -1,4 +1,4 @@
-package cz.vse.golemiokotlinlib.common.entity
+package cz.vse.golemiokotlinlib.common.entity.v2
 
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.BicycleCounter
 import cz.vse.golemiokotlinlib.common.entity.featurescollection.FeatureCollection
@@ -100,7 +100,6 @@ class BicycleCountersDeserializationTest {
 
     @Test
     fun `test deserialization of bicycle temperature JSON`() {
-        // Given
         val json = """
             [
               {
