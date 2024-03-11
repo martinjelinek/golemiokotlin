@@ -1,5 +1,6 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
+    id("maven-publish")
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.serialization)
@@ -67,6 +68,18 @@ android {
     }
 }
 
-tasks.register("testClasses") {
-    // task configuration
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "cz.vse.golemiokotlin"
+            artifactId = "library"
+            version = "1.1"
+
+            afterEvaluate { artifact(tasks.getByName("bundleReleaseAar")) }
+        }
+    }
+
+    tasks.register("testClasses") {
+        // task configuration
+    }
 }
