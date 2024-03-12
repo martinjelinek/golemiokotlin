@@ -1,11 +1,7 @@
 # Golemio Kotlin KMM Library
 
-Golemio Kotlin is a Kotlin Multiplatform Mobile (KMM) library for accessing air quality data. It allows developers to retrieve air quality information from various sources using a unified API.
-
-## Features
-
-- Retrieve air quality data from different stations.
-- Easy-to-use API for integrating air quality data into your Kotlin Multiplatform projects.
+Golemio Kotlin is a Kotlin Multiplatform Mobile (KMM) library for accessing Prague open data from Golemio API. It implement most of the [API documentation](https://api.golemio.cz/docs/public-openapi/) GET methods and provides the data in kotlin data structures.
+This project has been developed as a diplomat thesis on Faculty of Informatics and Statistics, Prague University of Economics and Bussiness.
 
 ## Usage
 #### API Key
