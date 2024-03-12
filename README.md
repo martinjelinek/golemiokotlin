@@ -8,9 +8,12 @@ Golemio Kotlin is a Kotlin Multiplatform Mobile (KMM) library for accessing air 
 - Easy-to-use API for integrating air quality data into your Kotlin Multiplatform projects.
 
 ## Usage
-
-
-
-### Installation
-
-Add the following dependency to your Kotlin Multiplatform Mobile project:
+#### API Key
+First of all, you need to get your Golemio API key at [www.](https://api.golemio.cz/api-keys)
+#### Dependency
+Then you need to implement this dependency in your build.gradle.kts file:
+```kotlin
+implementation("cz.vse.golemiokotlin:lib:$version")
+```
+#### Client
+and then the data can be accessed via various clients.
