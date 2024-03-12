@@ -9,11 +9,25 @@ Golemio Kotlin is a Kotlin Multiplatform Mobile (KMM) library for accessing air 
 
 ## Usage
 #### API Key
-First of all, you need to get your Golemio API key at [www.](https://api.golemio.cz/api-keys)
+First of all, you need to get your Golemio API key [here](https://api.golemio.cz/api-keys).
 #### Dependency
 Then you need to implement this dependency in your build.gradle.kts file:
 ```kotlin
 implementation("cz.vse.golemiokotlin:lib:$version")
 ```
-#### Client
-and then the data can be accessed via various clients.
+#### Access to the data
+The data can be accessed via various clients. There are 12 data sets represented by 12 clients:
+
+* AirQualityClient
+* BicycleCountersClient
+* CityDistrictsClient
+* GardensClient
+* MedicalInstitutionsClient
+* MunicipalAuthoritiesClient
+* MunicipalLibrariesClient
+* MunicipalPoliceStationsClient
+* ParkingClient (v1)
+* PlaygroundsClient
+* WasteCollectionClient
+
+those clients contain methods to match the documentation [API documentation]([https://api.golemio.cz/docs/public-openapi/)https://api.golemio.cz/docs/public-openapi/]).
