@@ -6,7 +6,10 @@ plugins {
 }
 
 kotlin {
-    androidTarget()
+    applyDefaultHierarchyTemplate()
+    androidTarget {
+        publishLibraryVariants("release", "debug")
+    }
 
     listOf(
         iosX64(),
@@ -20,12 +23,10 @@ kotlin {
     }
 
     sourceSets {
-        val commonTest by getting {
-            dependencies {
-                implementation(projects.golemiokotlinlib)
-                implementation(libs.kotlin.test)
-                implementation(libs.coroutines.test)
-            }
+        commonTest.dependencies {
+            implementation(projects.golemiokotlinlib)
+            implementation(libs.kotlin.test)
+            implementation(libs.coroutines.test)
         }
     }
 }

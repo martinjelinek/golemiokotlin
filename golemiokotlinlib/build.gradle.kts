@@ -5,6 +5,9 @@ plugins {
     alias(libs.plugins.serialization)
 }
 
+group = "cz.vse"
+version = "1.4"
+
 kotlin {
     applyDefaultHierarchyTemplate()
     androidTarget {
@@ -12,6 +15,9 @@ kotlin {
             kotlinOptions {
                 jvmTarget = "17"
             }
+        }
+        androidTarget {
+            publishLibraryVariants("release", "debug")
         }
     }
 
@@ -50,18 +56,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
-    }
-}
-
-group = "cz.vse"
-version = "1.4"
-
-publishing {
-    repositories {
-        mavenLocal()
-    }
-    publications.withType<MavenPublication> {
-        artifactId ="golemiokotlin"
     }
 }
 
