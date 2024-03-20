@@ -37,12 +37,17 @@ kotlin {
             implementation(libs.ktor.client.contentnegotiation)
             implementation(libs.ktor.client.json)
             implementation(libs.common.serialization.json)
-            implementation(libs.ktor.client.cio)
         }
 
         commonTest.dependencies {
             implementation(libs.common.serialization.json)
             implementation(kotlin("test"))
+        }
+        androidMain.dependencies {
+            implementation(libs.ktor.client.android)
+        }
+        iosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
         }
     }
 }
