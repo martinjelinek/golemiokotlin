@@ -5,7 +5,6 @@ import cz.vse.jelinekma.pragueopendatakotlinlib.dummyData.ApiKeyLocal
 /**
  * Common logic for testing the clients.
  */
-// TODO zminit proc nemam u vseho dummy repo - data se meni v case, kdyz request nespadne na serializaci, potvrzuje funkcnost struktury
 open class TestClient {
     val apiKey: String = ApiKeyLocal.API_KEY
     val latlng = Pair("50.124935", "14.457204")
