@@ -1,5 +1,6 @@
 package cz.vse.jelinekma.pragueopendatakotlinlib.v1
 
+import cz.vse.golemiokotlinlib.common.service.impl.HttpClientFactory
 import cz.vse.golemiokotlinlib.v1.client.ParkingClient
 import cz.vse.jelinekma.pragueopendatakotlinlib.TestClient
 import cz.vse.jelinekma.pragueopendatakotlinlib.dummyData.ApiKeyLocal
@@ -12,10 +13,12 @@ import kotlin.test.assertTrue
 class TestParkingV1Client : TestClient() {
 
     private lateinit var client: ParkingClient
+    private lateinit var http: HttpClientFactory
 
     @BeforeTest
     fun setUp() {
         client = ParkingClient(ApiKeyLocal.API_KEY)
+        http = HttpClientFactory
     }
 
     @Test

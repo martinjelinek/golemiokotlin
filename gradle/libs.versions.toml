@@ -1,8 +1,7 @@
 [versions]
-agp = "8.1.4"
+agp = "8.2.0"
 kotlin = "1.9.20"
 coroutines = "1.7.3"
-detekt = "1.19.0"
 ktor = "2.3.7"
 build-serializationplugin = "1.9.21"
 serialization-runtime = "1.4.1"
@@ -13,14 +12,14 @@ kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotl
 # Coroutines - https://github.com/kotlin/kotlinx.coroutines
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 
-# Ktor - https://ktor.io
-## Client - https://ktor.io/docs/client.html
+# Ktor client - https://ktor.io/docs/client.html
 ktor-client-contentnegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
-ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
+ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 
-## serializiation - https://github.com/kotlin/kotlinx.serialization
+# Serializiation - https://github.com/kotlin/kotlinx.serialization
 common-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization-runtime" }
 
 [plugins]

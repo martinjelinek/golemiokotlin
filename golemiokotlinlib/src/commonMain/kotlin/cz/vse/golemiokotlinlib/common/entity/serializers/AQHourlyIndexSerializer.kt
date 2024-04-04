@@ -35,7 +35,13 @@ data class StringAQ(
 data class IntAQ(
     override val value: Int
 ) : AQObject() {
+    override fun equals(other: Any?): Boolean {
+        return other is Int && value == other
+    }
 
+    override fun hashCode(): Int {
+        return value.hashCode()
+    }
 }
 
 /**

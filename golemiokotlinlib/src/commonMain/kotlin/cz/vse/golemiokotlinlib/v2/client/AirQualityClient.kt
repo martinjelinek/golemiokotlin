@@ -15,6 +15,13 @@ class AirQualityClient(
     private val repository: IAirQualityRepository = AirQualityCachingRepository.create(apiKey)
 
     /**
+     * @param latlng pair of coordinates
+     * @param range range in m
+     * @param districts list of prague city districts
+     * @param limit limit
+     * @param offset offset
+     * @param updatedSince updated since
+     *
      * @return A list of [AirQualityStation]s.
      */
     suspend fun getAllAirQualityStations(
@@ -29,6 +36,12 @@ class AirQualityClient(
     )
 
     /**
+     * @param sensorId id of sensor of requested station
+     * @param limit limit
+     * @param offset offset
+     * @param from timestamp when to get the data from
+     * @param to timestamp when to get the data to
+     *
      * @return [AirQualityStationHistory].
      */
     suspend fun getAirQualityStationsHistory(

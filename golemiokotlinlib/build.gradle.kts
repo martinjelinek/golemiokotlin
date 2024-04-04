@@ -5,6 +5,9 @@ plugins {
     alias(libs.plugins.serialization)
 }
 
+group = "cz.vse"
+version = "1.4"
+
 kotlin {
     applyDefaultHierarchyTemplate()
     androidTarget {
@@ -12,6 +15,9 @@ kotlin {
             kotlinOptions {
                 jvmTarget = "17"
             }
+        }
+        androidTarget {
+            publishLibraryVariants("release", "debug")
         }
     }
 
@@ -31,12 +37,17 @@ kotlin {
             implementation(libs.ktor.client.contentnegotiation)
             implementation(libs.ktor.client.json)
             implementation(libs.common.serialization.json)
-            implementation(libs.ktor.client.cio)
         }
 
         commonTest.dependencies {
             implementation(libs.common.serialization.json)
             implementation(kotlin("test"))
+        }
+        androidMain.dependencies {
+            implementation(libs.ktor.client.android)
+        }
+        iosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
         }
     }
 }
@@ -53,18 +64,14 @@ android {
     }
 }
 
-group = "cz.vse"
-version = "1.4"
-
-publishing {
-    repositories {
-        mavenLocal()
-    }
-    publications.withType<MavenPublication> {
-        artifactId ="golemiokotlin"
-    }
-}
-
 tasks.register("testClasses") {
     // task configuration
+}
+
+dependencies {
+    configurations
+        .filter { it.name.startsWith("ksp") && it.name.contains("Test") }
+        .forEach {
+            add(it.name, "io.mockative:mockative-processor:2.1.0")
+        }
 }

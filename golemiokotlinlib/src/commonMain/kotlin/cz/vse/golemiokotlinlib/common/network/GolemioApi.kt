@@ -527,7 +527,7 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
                 header("X-Access-Token", apiKey)
             }
         )
-
+        handleException(get.status)
         return get.body() as T
     }
 
@@ -548,4 +548,3 @@ internal class GolemioApi(private val apiKey: String) : IGolemioApi {
 }
 
 class ApiException(responseCode: Int, message: String) : Exception("$responseCode: $message")
-
