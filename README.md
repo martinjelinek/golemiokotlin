@@ -9,7 +9,7 @@ First of all, you need to get your Golemio API key [here](https://api.golemio.cz
 #### Dependency
 Then you need to implement this dependency in your build.gradle.kts file:
 ```kotlin
-implementation("cz.vse.golemiokotlin:lib:$version")
+implementation("cz.vse.golemiokotlinlib:$version")
 ```
 #### Access to the data
 The data can be accessed via various clients. There are 12 data sets represented by 12 clients. Those are designed to contain methods to match the documentation [API documentation](https://api.golemio.cz/docs/public-openapi/). Example of usage:

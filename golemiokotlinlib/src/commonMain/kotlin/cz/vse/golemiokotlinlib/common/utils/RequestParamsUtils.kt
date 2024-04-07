@@ -46,7 +46,7 @@ object RequestParamsUtils {
 
     fun getContainerId(containerId: String) = getSimpleParam("containerId", containerId)
 
-    fun getKsnkoId(containerId: String?) = getSimpleParam("ksnkoId", containerId)
+    fun getKsnkoId(ksnkoId: String?) = getSimpleParam("ksnkoId", ksnkoId)
 
     fun getWasteStationsAccessibility(accessibility: WasteStationAccessibility?): Pair<String, String>? {
         return if (accessibility != null) {
