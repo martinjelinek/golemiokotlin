@@ -15,7 +15,7 @@ implementation("cz.vse.golemiokotlinlib:$version")
 The data can be accessed via various clients. There are 12 data sets represented by 12 clients. Those are designed to contain methods to match the documentation [API documentation](https://api.golemio.cz/docs/public-openapi/). Example of usage:
 
 ```kotlin
-val airQualityClient: AirQualityClient = AirQualityClient(yourApiKey)
+val airQualityClient: AirQualityClient = AirQualityClient("yourApiKey")
 
 val data = client.getAllAirQualityStations(
             latlng = Pair("50.124935", "14.457204"),
