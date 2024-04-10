@@ -17,7 +17,7 @@ The data can be accessed via various clients. There are 12 data sets represented
 ```kotlin
 val airQualityClient: AirQualityClient = AirQualityClient("yourApiKey")
 
-val data = client.getAllAirQualityStations(
+val data = airQualityClient.getAllAirQualityStations(
             latlng = Pair("50.124935", "14.457204"),
             range = 5000,
             districts = listOf("praha-4"),
