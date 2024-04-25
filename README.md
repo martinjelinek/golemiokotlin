@@ -41,6 +41,6 @@ val data = airQualityClient.getAllAirQualityStations(
 
 ## License
 
-This project is licensed under the MIT license - see the LICENSE file for more details.
+This project is licensed under the MIT license - see the [LICENSE](https://github.com/martinjelinek/golemiokotlin/blob/main/LICENSE) file for more details.
 
 
