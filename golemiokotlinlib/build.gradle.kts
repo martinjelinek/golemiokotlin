@@ -1,12 +1,47 @@
+import com.vanniktech.maven.publish.SonatypeHost
+
+mavenPublishing {
+    publishToMavenCentral(SonatypeHost.DEFAULT)
+    signAllPublications()
+    coordinates("io.github.martinjelinek", "golemiokotlin", "0.1.0-SNAPSHOT")
+
+    pom {
+        name = "Golemio Kotlin"
+        description = "KMM library for fetching and deserializing data from api.golemio.cz"
+        inceptionYear = "2024"
+        url = "https://github.com/martinjelinek/golemiokotlin"
+        licenses {
+            license {
+                name = "The MIT License"
+                url = "https://opensource.org/licenses/MIT"
+                distribution = "https://opensource.org/licenses/MIT"
+            }
+        }
+        developers {
+            developer {
+                id = "martinjelinek"
+                name = "Martin Jelinek"
+                url = "https://github.com/martinjelinek/"
+            }
+        }
+        scm {
+            url = "https://github.com/username/golemiokotlin/"
+            connection = "scm:git:git://github.com/martinjelinek/golemiokotlin.git"
+            developerConnection = "scm:git:ssh://git@github.com/martinjelinek/golemiokotlin.git"
+        }
+    }
+}
+
 plugins {
     id("maven-publish")
+    id ("com.vanniktech.maven.publish") version "0.28.0"
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.serialization)
 }
 
-group = "cz.vse"
-version = "1.4"
+group = "io.github.martinjelinek"
+version = "0.1.0"
 
 kotlin {
     applyDefaultHierarchyTemplate()
@@ -53,7 +88,7 @@ kotlin {
 }
 
 android {
-    namespace = "cz.vse.golemiokotlin"
+    namespace = "io.github.martinjelinek.golemiokotlin"
     compileSdk = (findProperty("android.compileSdk") as String).toInt()
     defaultConfig {
         minSdk = (findProperty("android.minSdk") as String).toInt()
