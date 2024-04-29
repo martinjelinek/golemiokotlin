@@ -1,9 +1,7 @@
 import com.vanniktech.maven.publish.SonatypeHost
 
 mavenPublishing {
-    publishToMavenCentral(SonatypeHost.DEFAULT)
-    signAllPublications()
-    coordinates("io.github.martinjelinek", "golemiokotlin", "0.1.0-SNAPSHOT")
+    coordinates("io.github.martinjelinek", "golemiokotlin", "0.1.0")
 
     pom {
         name = "Golemio Kotlin"
@@ -25,15 +23,16 @@ mavenPublishing {
             }
         }
         scm {
-            url = "https://github.com/username/golemiokotlin/"
+            url = "https://github.com/martinjelinek/golemiokotlin/"
             connection = "scm:git:git://github.com/martinjelinek/golemiokotlin.git"
             developerConnection = "scm:git:ssh://git@github.com/martinjelinek/golemiokotlin.git"
         }
     }
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    signAllPublications()
 }
 
 plugins {
-    id("maven-publish")
     id ("com.vanniktech.maven.publish") version "0.28.0"
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
