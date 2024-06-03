@@ -3,6 +3,8 @@
 Golemio Kotlin is a Kotlin Multiplatform Mobile (KMM) library for accessing Prague open data from Golemio API. It implements most of the [API documentation](https://api.golemio.cz/docs/public-openapi/) GET methods and provides the data in Kotlin data structures.
 This project has been developed as a diplomat thesis on the Faculty of Informatics and Statistics, Prague University of Economics and Business.
 
+
+
 ## Usage
 #### API Key
 First of all, you need to get your Golemio API key [here](https://api.golemio.cz/api-keys).
